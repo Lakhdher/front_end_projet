@@ -2,9 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    container: {
-      center: true,
+    extend: {
+      colors: {
+        primary: 'var(--primary)',
+        'primary-dark': 'var(--primary-dark)',
+        'primary-100': 'var(--primary-100)',
+        secondary: 'var(--secondary)',
+        accent: 'var(--accent)',
+      },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
 };
