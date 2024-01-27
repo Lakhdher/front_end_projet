@@ -5,7 +5,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
-
 export class ProductCardComponent {
   @Input()
   images?: string[];
@@ -37,5 +36,22 @@ export class ProductCardComponent {
   @Output()
   addToWishlist = new EventEmitter<void>();
 
+  priceDifference: number = 0;
+  discount: number = 0;
   constructor() {}
+
+  ngOnInit(): void {
+    if (this.originalPrice && this.price) {
+      this.priceDifference = this.originalPrice - this.price;
+      this.discount = this.getDiscountPercentage();
+    }
+  }
+
+  getDiscountPercentage(): number {
+    if (this.originalPrice && this.price) {
+      console.log(this.priceDifference);
+      return Math.round((this.priceDifference / this.originalPrice) * 100);
+    }
+    return -1;
+  }
 }
