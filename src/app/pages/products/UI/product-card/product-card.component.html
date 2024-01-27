@@ -26,7 +26,7 @@
         <p>
           Savings
           <strong class="text-green-600">{{
-              priceDifference | currency: 'USD': true
+            priceDifference | currency : "USD" : true
           }}</strong>
           ({{ discount }}<span class="text-xs">%</span>)
         </p>
@@ -44,5 +44,10 @@
   >
     Quick View
   </button>
-  <button wfh size="small"></button>
+  <button wfh size="small">
+    <rmx-icon
+      name="shopping-cart-2-fill"
+      class="add-to-cart icon-sm"
+    ></rmx-icon>
+  </button>
 </footer>

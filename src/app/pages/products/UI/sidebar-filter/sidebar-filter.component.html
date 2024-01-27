@@ -1,0 +1,72 @@
+<section>
+  <app-accordion>
+    <app-accordion-item title="Price Range">
+      <ng-template wfhAccordionContent>
+        <div class="p-2 grid grid-cols-2 gap-4" formGroupName="priceRange">
+          <div class="form-group">
+            <label>From</label>
+            <div class="flex justify-start items-stretch">
+              <input type="text" class="flex-1 w-full" formControlName="from" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>To</label>
+            <div class="flex justify-start items-stretch">
+              <input type="text" class="flex-1 w-full" formControlName="to" />
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </app-accordion-item>
+    <app-accordion-item title="Brands">
+      <ng-template wfhAccordionContent>
+        <div class="p-4 flex flex-col gap-2">
+          <ng-container>
+            test checkbox
+          </ng-container>
+        </div>
+      </ng-template>
+    </app-accordion-item>
+    <app-accordion-item title="Categories">
+      <ng-template wfhAccordionContent>
+        <div class="p-4 flex flex-col gap-2">
+          <ng-container> test checkbox </ng-container>
+        </div>
+      </ng-template>
+    </app-accordion-item>
+    <app-accordion-item title="Rating">
+      <ng-template wfhAccordionContent>
+        <div class="p-4"></div>
+      </ng-template>
+    </app-accordion-item>
+    <app-accordion-item title="Colors">
+      <ng-template wfhAccordionContent>
+        <div class="p-4 filter__colors">
+          <ul class="flex gap-4 flex-wrap">
+            <ng-container>
+              <li>
+                <button
+                  class="bg-gray-100 p-1 rounded-md border border-gray-100 flex items-center gap-1 text-xs"
+                >
+                  <div class="w-4 h-4 rounded-md color-indicator"></div>
+                  <p>test</p>
+                </button>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+      </ng-template>
+    </app-accordion-item>
+    <app-accordion-item title="Stock">
+      <ng-template wfhAccordionContent>
+        <div class="p-4 flex flex-col gap-2"></div>
+      </ng-template>
+    </app-accordion-item>
+  </app-accordion>
+</section>
+<footer
+  class="mt-4 flex gap-2 shadow-lg rounded-md sticky bottom-2 p-4 bg-white border border-gray-200"
+>
+  <button wfh size="small" class="flex-1">Apply Filters</button>
+  <button wfh variant="neutral" size="small">Reset</button>
+</footer>
