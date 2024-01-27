@@ -11,9 +11,8 @@ import { NotFound404Component }from "./pages/not-found404/not-found404.component
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'wishlist', component: WishlistComponent },
-  { path: '', component: HomeComponent , pathMatch: 'full'},
-  { path: 'home', redirectTo: '', pathMatch: 'full' },
+  { path: 'favorites', component: WishlistComponent },
+  { path: 'home', component: HomeComponent },
   { path: '**', component: NotFound404Component  }
 ];
 
