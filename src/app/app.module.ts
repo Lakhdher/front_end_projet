@@ -9,6 +9,7 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFound404Component } from './pages/not-found404/not-found404.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NotFound404Component } from './pages/not-found404/not-found404.componen
     WishlistComponent,
     CartComponent,
     HomeComponent,
-    NotFound404Component
+    NotFound404Component,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
