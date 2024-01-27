@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CartComponent } from './cart/cart.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
-import { ProductsComponent } from './products/products.component';
-import {HomeComponent} from "./home/home.component";
-import { NotFound404Component }from "./not-found404/not-found404.component"
+import { CartComponent } from './pages/cart/cart.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { ProductsComponent } from './pages/products/products.component';
+import {HomeComponent} from "./pages/home/home.component";
+import { NotFound404Component }from "./pages/not-found404/not-found404.component"
 
 
 
