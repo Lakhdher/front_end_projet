@@ -5,12 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductCardComponent } from './pages/products/UI/product-card/product-card.component';
-import { SidebarFilterComponent } from './pages/products/UI/sidebar-filter/sidebar-filter.component';
+import { SidebarFilterComponent } from './pages/products/sidebar-filter/sidebar-filter.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import {
   RiAncientGateFill,
@@ -27,12 +26,13 @@ import { CheckboxComponent } from './pages/products/UI/checkbox/checkbox.compone
 import { AccordionContent } from './pages/products/UI/accordion/directives/accordion-content.directive';
 import { AccordionHeader } from './pages/products/UI/accordion/directives/accordion-header.directive';
 import { AccordionTitle } from './pages/products/UI/accordion/directives/accordion-title.directive';
+import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 
 const icons = {
   RiAncientGateFill,
   RiHome2Fill,
   RiHeart3Line,
-  RiShoppingCart2Fill
+  RiShoppingCart2Fill,
 };
 
 @NgModule({
@@ -48,9 +48,16 @@ const icons = {
     CheckboxComponent,
     AccordionContent,
     AccordionHeader,
-    AccordionTitle
+    AccordionTitle,
+    ProductsListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, RemixIconModule.configure(icons), ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    RemixIconModule.configure(icons),
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

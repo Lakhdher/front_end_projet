@@ -5,10 +5,10 @@ import {
   Input,
   Output,
 } from '@angular/core';
-import { COLORS } from '../../mock_data/colors';
+import { COLORS } from '../mock_data/colors';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { BRANDS } from '../../mock_data/brands';
-import { CATEGORIES } from '../../mock_data/categories';
+import { BRANDS } from '../mock_data/brands';
+import { CATEGORIES } from '../mock_data/categories';
 
 @Component({
   selector: 'app-sidebar-filter',
