@@ -49,7 +49,6 @@ export class ProductCardComponent {
 
   getDiscountPercentage(): number {
     if (this.originalPrice && this.price) {
-      console.log(this.priceDifference);
       return Math.round((this.priceDifference / this.originalPrice) * 100);
     }
     return -1;
