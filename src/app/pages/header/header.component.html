@@ -1,0 +1,76 @@
+<header
+  class="bg-white z-10 h-20 flex justify-between  items-center max-w-screen-2xl">
+  <div class="flex items-center gap-2">
+    <img routerLink="home"
+         src="../../../assets/images/logo2.png" alt="our app"
+         class="h-24 w-24 aspect-square cursor-pointer"
+         routerLinkActive="text-primary"
+    >
+    <nav class="ml-4">
+      <ul class="flex items-center gap-8">
+        <li>
+          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+             routerLink="home"
+             routerLinkActive="text-primary">Home</a>
+        </li>
+        <li>
+          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+             routerLink="products"
+             routerLinkActive="text-primary">Products</a>
+        </li>
+        <li class="flex gap-1">
+          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+             routerLink="favorites"
+             routerLinkActive="text-primary">Favorites</a>
+        </li>
+
+        <li class="flex gap-1 items-center " [routerLinkActive]="['active']" routerLink="/cart">
+          <a class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+
+             routerLinkActive="text-primary">My Cart</a>
+          <div class="relative">
+            <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"
+                 routerLinkActive="fill-black">
+              <path
+                d="M6.00488 9H19.9433L20.4433 7H8.00488V5H21.7241C22.2764 5 22.7241 5.44772 22.7241 6C22.7241 6.08176 22.7141 6.16322 22.6942 6.24254L20.1942 16.2425C20.083 16.6877 19.683 17 19.2241 17H5.00488C4.4526 17 4.00488 16.5523 4.00488 16V4H2.00488V2H5.00488C5.55717 2 6.00488 2.44772 6.00488 3V9ZM6.00488 23C4.90031 23 4.00488 22.1046 4.00488 21C4.00488 19.8954 4.90031 19 6.00488 19C7.10945 19 8.00488 19.8954 8.00488 21C8.00488 22.1046 7.10945 23 6.00488 23ZM18.0049 23C16.9003 23 16.0049 22.1046 16.0049 21C16.0049 19.8954 16.9003 19 18.0049 19C19.1095 19 20.0049 19.8954 20.0049 21C20.0049 22.1046 19.1095 23 18.0049 23Z"></path>
+            </svg>
+            <div class="absolute -top-2 -right-3.5 bg-sky-950 text-white text-xs rounded-full px-1">
+              1
+            </div>
+          </div>
+
+        </li>
+
+      </ul>
+    </nav>
+  </div>
+  <div class="flex-1 px-6 relative">
+    <div class="absolute h-full left-8 top-0 grid place-items-center">
+      <img src="../../../assets/images/search.png" class="w-5 h-5" alt="search icon">
+    </div>
+    <input type="text" name="search" id="search"
+           class="w-full bg-gray-100 pl-8 shadow appearance-none border-gray-200 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+  </div>
+  <ul>
+    <li class="relative mr-4 hover:bg-gray-200 p-2 rounded-full">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#4B5563"
+           class="h-5 w-5  cursor-pointer">
+        <path
+          d="M12 2C16.9706 2 21 6.04348 21 11.0314V20H3V11.0314C3 6.04348 7.02944 2 12 2ZM9.5 21H14.5C14.5 22.3807 13.3807 23.5 12 23.5C10.6193 23.5 9.5 22.3807 9.5 21Z"></path>
+      </svg>
+      <div class="absolute -top-1 -right-0.5 bg-sky-950 text-white text-xs rounded-full px-1">
+        3
+      </div>
+    </li>
+  </ul>
+
+  <div class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2"
+  >
+    <button class="bg-primary text-white rounded-md">Login</button>
+  </div>
+
+
+</header>
+
+
+
