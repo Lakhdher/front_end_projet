@@ -3,7 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './pages/header/header.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { WishlistComponent } from './pages/wishlist/wishlist.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NotFound404Component } from './pages/not-found404/not-found404.component';
+import { FooterComponent } from './pages/footer/footer.component';
 import { ProductCardComponent } from './pages/products/UI/product-card/product-card.component';
 import { SidebarFilterComponent } from './pages/products/UI/sidebar-filter/sidebar-filter.component';
 
@@ -34,10 +40,15 @@ const icons = {
   RiHeart3Line,
   RiShoppingCart2Fill
 };
-
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    WishlistComponent,
+    CartComponent,
+    HomeComponent,
+    NotFound404Component,
+    FooterComponent
     AccordionItem,
     ProductsComponent,
     ProductCardComponent,
