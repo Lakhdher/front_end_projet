@@ -5,6 +5,8 @@ import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { ProductsComponent } from './pages/products/products.component';
 import {HomeComponent} from "./pages/home/home.component";
 import { NotFound404Component }from "./pages/not-found404/not-found404.component"
+import {LoginComponent} from "./pages/login/login.component";
+import {RegisterComponent} from "./pages/register/register.component";
 
 
 
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'favorites', component: WishlistComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFound404Component  }
 ];

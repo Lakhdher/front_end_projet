@@ -9,25 +9,29 @@
     <nav class="ml-4">
       <ul class="flex items-center gap-8">
         <li>
-          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
-             routerLink="home"
-             routerLinkActive="text-primary">Home</a>
+          <a
+            class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+            routerLink="home"
+            routerLinkActive="text-primary">Home</a>
         </li>
         <li>
-          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
-             routerLink="products"
-             routerLinkActive="text-primary">Products</a>
+          <a
+            class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+            routerLink="products"
+            routerLinkActive="text-primary">Products</a>
         </li>
         <li class="flex gap-1">
-          <a class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
-             routerLink="favorites"
-             routerLinkActive="text-primary">Favorites</a>
+          <a
+            class="text-gray-500 text-base hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+            routerLink="favorites"
+            routerLinkActive="text-primary">Favorites</a>
         </li>
 
         <li class="flex gap-1 items-center " [routerLinkActive]="['active']" routerLink="/cart">
-          <a class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+          <a
+            class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
 
-             routerLinkActive="text-primary">My Cart</a>
+            routerLinkActive="text-primary">My Cart</a>
           <div class="relative">
             <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="gray"
                  routerLinkActive="fill-black">
@@ -64,9 +68,11 @@
     </li>
   </ul>
 
-  <div class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2"
+  <div routerLink="login"
+       class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2"
   >
     <button class="bg-primary text-white rounded-md">Login</button>
+
   </div>
 
 
