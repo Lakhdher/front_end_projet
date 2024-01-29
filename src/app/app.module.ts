@@ -15,6 +15,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./interceptors/auth.interceptor";
 import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { DefaultImagePipe } from './pages/profile/pipes/default-image.pipe';
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NotFound404Component,
     FooterComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule,
     HomeComponent,
+    ProfileComponent,
+    DefaultImagePipe
+
   ],
   providers: [
     authInterceptorProviders

@@ -1,0 +1,24 @@
+<h1 class='text-center font-bold '>Profile</h1>
+<mat-card class="justify-center items-center">
+  <mat-card-header>
+    <img class="w-64 h-64 rounded-full"  src="{{ person?.photo|defaultImage }}"
+         alt="{{ person?.prenom|titlecase}}+{{ person?.nom|titlecase }}">
+  </mat-card-header>
+  <mat-card-content class="mt-10 mb-10 justify-center items-center text-center text-xl">
+    <h1>Name</h1>
+    <p>{{ person?.prenom|titlecase}} {{ person?.nom|titlecase }}</p>
+    <h1>Age</h1>
+    <p>{{ person?.age }}</p>
+    <h1>Genre</h1>
+    <p>{{ person?.genre }}</p>
+  </mat-card-content>
+  <mat-card-actions class="w-96 mb-10 flex-col justify-evenly" >
+    <a href="/cart">
+      <button mat-raised-button color="primary">Cart</button>
+    </a>
+    <a href="/orders">
+      <button mat-raised-button color="primary">Orders</button>
+    </a>
+
+  </mat-card-actions>
+</mat-card>
