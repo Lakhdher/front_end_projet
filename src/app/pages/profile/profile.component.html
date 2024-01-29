@@ -1,24 +1,58 @@
-<h1 class='text-center font-bold '>Profile</h1>
-<mat-card class="justify-center items-center">
-  <mat-card-header>
-    <img class="w-64 h-64 rounded-full"  src="{{ person?.photo|defaultImage }}"
-         alt="{{ person?.prenom|titlecase}}+{{ person?.nom|titlecase }}">
-  </mat-card-header>
-  <mat-card-content class="mt-10 mb-10 justify-center items-center text-center text-xl">
-    <h1>Name</h1>
-    <p>{{ person?.prenom|titlecase}} {{ person?.nom|titlecase }}</p>
-    <h1>Age</h1>
-    <p>{{ person?.age }}</p>
-    <h1>Genre</h1>
-    <p>{{ person?.genre }}</p>
-  </mat-card-content>
-  <mat-card-actions class="w-96 mb-10 flex-col justify-evenly" >
-    <a href="/cart">
-      <button mat-raised-button color="primary">Cart</button>
-    </a>
-    <a href="/orders">
-      <button mat-raised-button color="primary">Orders</button>
-    </a>
+<p class='text-center text-4xl font-bold '>Profile</p>
+<mat-card >
+  <mat-card-header class=" h-72 w-full">
+    <img class="object-cover" src="assets/images/cover.jpg" alt="cover">
 
+  </mat-card-header>
+  <mat-card-content class="mb-10  text-xl ">
+    <div class="flex flex-row h-32 ">
+      <img class="w-60 h-60 ml-10 rounded-full -translate-y-32  " src="{{ person?.photo|defaultImage }}"
+            alt="{{ person?.prenom|titlecase}}+{{ person?.nom|titlecase }}">
+      <div class=" -translate-y-0 translate-x-4  ">
+        <p > Name : {{ person?.prenom|titlecase }} {{ person?.nom|titlecase }}<br>
+            Age : {{ person?.age }}<br>
+            Gender : {{ person?.genre }}</p></div>
+    </div>
+    <mat-card-content class="mt-10">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Orders</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Order Status</th>
+                <th>Order Total</th>
+              </tr>
+            </thead>
+            <tr>
+              <td>1</td>
+              <td>12/12/2020</td>
+              <td>Delivered</td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>12/12/2020</td>
+              <td>Delivered</td>
+              <td>1000</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>12/12/2020</td>
+              <td>Delivered</td>
+              <td>1000</td>
+          </table>
+        </mat-card-content>
+      </mat-card>
+  </mat-card-content>
+  </mat-card-content>
+  <mat-card-actions class="w-full mb-10 flex-col justify-evenly" >
+    <button mat-raised-button color="primary" (click)="editProfile()">Edit Profile</button>
+    <button mat-raised-button color="primary" (click)="editPassword()">Edit Password</button>
+    <button mat-raised-button color="primary" (click)="deleteProfile()">Delete Profile</button>
   </mat-card-actions>
 </mat-card>

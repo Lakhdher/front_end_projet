@@ -32,6 +32,14 @@ export class ProfileComponent {
     email: 'john.doe@gmail.com'
   }
   constructor() { }
+  editPassword() {
+    console.log('editPassword');
 
-
+  }
+  editProfile() {
+    console.log('editProfile');
+  }
+  deleteProfile() {
+    console.log('deleteProfile');
+  }
 }
