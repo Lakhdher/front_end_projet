@@ -14,6 +14,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./interceptors/auth.interceptor";
 import { RegisterComponent } from './pages/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,6 @@ import { RegisterComponent } from './pages/register/register.component';
     ProductsComponent,
     WishlistComponent,
     CartComponent,
-    HomeComponent,
     NotFound404Component,
     FooterComponent,
     LoginComponent,
@@ -32,7 +33,9 @@ import { RegisterComponent } from './pages/register/register.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    HomeComponent,
   ],
   providers: [
     authInterceptorProviders
