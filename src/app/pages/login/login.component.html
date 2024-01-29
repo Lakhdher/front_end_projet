@@ -1,0 +1,63 @@
+<div class=" mx-auto justify-center lg:mt-20 h-screen sm:mt-5 lg:w-2/5 sm:w-4/5">
+  <form [formGroup]="form" class="bg-[#EBF3E8] shadow-2xl rounded px-8 pt-6 pb-8 mb-4">
+    <fieldset>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+          Email
+        </label>
+        <input name="email" formControlName="email"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="username" type="text"
+
+               [ngClass]="{
+               'bg-red-50 border border-red-500 text-red-900':  form.get('email')?.errors && form.get('email')?.touched
+               }"
+               placeholder="name@example.com">
+        <p
+          *ngIf="
+          form.get('email')?.errors && (form.get('email')?.dirty || form.get('email')?.touched)
+        "
+          class="mb-2 text-sm text-red-600 dark:text-red-500"
+        >
+          invalid email address
+        </p>
+
+      </div>
+      <div class="form-field">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+          Password
+        </label>
+        <input name="password" formControlName="password"
+               type="password"
+               id="password"
+               [ngClass]="{
+               'bg-red-50 border border-red-500 text-red-900':  form.get('password')?.errors && form.get('password')?.touched
+               }"
+               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+               placeholder="******************">
+        <p
+          *ngIf="form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)"
+          class="mb-3 text-sm text-red-600 dark:text-red-500"
+        >
+          password must be at least 6 characters
+        </p>
+
+      </div>
+    </fieldset>
+    <div class="flex items-center justify-between">
+      <button
+        class="bg-slate-700 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        (click)="login()"
+        [disabled]="form.invalid"
+        type="submit">
+        Sign In
+      </button>
+      <p class="text-sm mt- font-light text-gray-700 dark:text-gray-700">
+        Don’t have an account yet? <a routerLink="/register"
+                                      class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign
+        up</a>
+      </p>
+    </div>
+
+  </form>
+</div>
