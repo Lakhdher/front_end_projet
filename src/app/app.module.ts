@@ -17,6 +17,7 @@ import {
   RemixIconModule,
   RiHeart3Line,
   RiShoppingCart2Fill,
+  RiCloseLine,
 } from 'angular-remix-icon';
 import { AccordionComponent } from './pages/products/UI/accordion/accordion.component';
 import { ButtonComponent } from './pages/products/UI/button/button.component';
@@ -27,12 +28,15 @@ import { AccordionContent } from './pages/products/UI/accordion/directives/accor
 import { AccordionHeader } from './pages/products/UI/accordion/directives/accordion-header.directive';
 import { AccordionTitle } from './pages/products/UI/accordion/directives/accordion-title.directive';
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
+import { ProductQuickViewComponent } from './pages/products/products-quick-view/products-quick-view.component';
+import { SideSheetComponent } from './pages/products/UI/side-sheet/side-sheet.component';
 
 const icons = {
   RiAncientGateFill,
   RiHome2Fill,
   RiHeart3Line,
   RiShoppingCart2Fill,
+  RiCloseLine,
 };
 
 @NgModule({
@@ -50,6 +54,8 @@ const icons = {
     AccordionHeader,
     AccordionTitle,
     ProductsListComponent,
+    ProductQuickViewComponent,
+    SideSheetComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,10 +37,7 @@ export class SidebarFilterComponent {
 
   active_colors: { [key: string]: boolean } = {};
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private cdr: ChangeDetectorRef
-  ) {
+  constructor(private readonly fb: FormBuilder) {
     this.COLORS.forEach((color) => {
       this.active_colors[color.value] = false;
     });
@@ -67,7 +64,6 @@ export class SidebarFilterComponent {
         this.active_colors[value] = true;
       }
     }
-    console.log(this.active_colors);
   }
 
   triggerChange() {
@@ -76,8 +72,6 @@ export class SidebarFilterComponent {
 
   resetFilters() {
     this.filtersForm.reset();
-    this.cdr.detectChanges();
-    this.triggerChange();
   }
 
   selectCategory(value: string) {

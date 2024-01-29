@@ -9,7 +9,6 @@ import {
   selector: 'button[appButton]',
   template: ` <ng-content></ng-content> `,
   styleUrls: ['./button.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
 export class ButtonComponent {

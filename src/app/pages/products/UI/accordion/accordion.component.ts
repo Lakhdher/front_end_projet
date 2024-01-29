@@ -19,8 +19,6 @@ import {
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-
   animations: [
     trigger('contentExpansion', [
       state(

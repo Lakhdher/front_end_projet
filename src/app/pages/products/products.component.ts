@@ -7,6 +7,9 @@ import { PRODUCTS } from './mock_data/products';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
+openQuickView(arg0: any) {
+throw new Error('Method not implemented.');
+}
   clearSearch() {
     throw new Error('Method not implemented.');
   }

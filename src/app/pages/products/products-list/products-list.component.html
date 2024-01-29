@@ -9,6 +9,7 @@
           [price]="product.price"
           [originalPrice]="product.originalPrice"
           [images]="product.images"
+          (quickView)="this.openQuickView(product)"
         ></app-product-card>
       </li>
     </ul>
@@ -29,3 +30,7 @@
     </p>
   </section>
 </ng-template>
+<app-product-quick-view
+  [product]="this.activeProduct$ | async"
+  (addToCart)="this.addToCart($event)"
+></app-product-quick-view>
