@@ -14,6 +14,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./interceptors/auth.interceptor";
 import { RegisterComponent } from './pages/register/register.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DefaultImagePipe } from './pages/profile/pipes/default-image.pipe';
@@ -85,6 +87,8 @@ const icons = {
     RemixIconModule.configure(icons),
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HomeComponent,
     ProfileComponent,
     DefaultImagePipe
