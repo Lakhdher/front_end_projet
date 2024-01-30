@@ -22,7 +22,7 @@ interface Personne {
   imports: [MatCardModule, MatButtonModule, TitleCasePipe, DefaultImagePipe]
 })
 export class ProfileComponent {
-  person: Personne = {
+  person: Personne | null = {
     nom: 'Doe',
     prenom: 'John',
     age: 25,

@@ -72,7 +72,6 @@ const icons = {
     HeaderComponent,
     ProductsComponent,
     WishlistComponent,
-    CartComponent,
     NotFound404Component,
     FooterComponent,
     LoginComponent,
@@ -90,6 +89,7 @@ const icons = {
     ToastrModule.forRoot(),
     HomeComponent,
     ProfileComponent,
+    CartComponent,
     DefaultImagePipe
   ],
   providers: [

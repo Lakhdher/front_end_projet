@@ -1,1 +1,27 @@
-<p>cart works!</p>
+<p class="text-4xl flex justify-center m-10">Cart</p>
+<mat-divider></mat-divider>
+<h1 *ngIf="products.length==0" >There are no products in your cart</h1>
+<h1 *ngIf="products.length==1" >There is {{this.products.length}} products in your cart</h1>
+<h1 *ngIf="products.length>1" >There are {{this.products.length}} products in your cart</h1>
+
+<table class="w-full " *ngIf="this.products.length">
+  <thead>
+    <th>Article</th>
+    <th>Name</th>
+    <th>Unit Price</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </thead>
+  <tr class="border-b-2  text-center  " *ngFor="let product of this.products">
+    <td class="flex items-center justify-center"><img  ngSrc="{{product.image}}" alt="" [height]="100" [width]="100"></td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td><input [defaultValue]="1" class="w-16" type="number" (change)="setQuantity($event,product)"></td>
+    <td>{{product.price*product.quantity}}</td>
+    <td><button class="bg-red-500 text-white p-2 rounded-lg" (click)="removeProduct(product)">X</button></td>
+  </tr>
+</table>
+<div class="flex justify-center m-10">
+  <button class="bg-blue-500 text-white p-2 rounded-lg" (click)="clearCart()">Clear Cart</button>
+  <button class="bg-blue-500 text-white p-2 rounded-lg ml-10" (click)="checkout()">Checkout</button>
+</div>
