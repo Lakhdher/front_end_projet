@@ -71,7 +71,6 @@ const icons = {
     HeaderComponent,
     ProductsComponent,
     WishlistComponent,
-    CartComponent,
     NotFound404Component,
     FooterComponent,
     LoginComponent,
@@ -87,6 +86,7 @@ const icons = {
     HttpClientModule,
     HomeComponent,
     ProfileComponent,
+    CartComponent,
     DefaultImagePipe
   ],
   providers: [
