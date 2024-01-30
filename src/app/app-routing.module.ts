@@ -8,6 +8,7 @@ import { NotFound404Component }from "./pages/not-found404/not-found404.component
 import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
 import {authGuard} from "./guards/auth.guard";
+import {ProfileComponent} from "./pages/profile/profile.component";
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: NotFound404Component  }
 ];

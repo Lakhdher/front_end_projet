@@ -1,0 +1,22 @@
+<div>
+  <mat-grid-list class="mt-0" cols="4" rowHeight="250px">
+    <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+    >
+      <img class="object-fill" src="{{ tile.image }}" alt="{{ tile.image }}" />
+      <mat-grid-tile-footer class="flex justify-between">
+        <div class="flex items-center">
+          <h3 [ngStyle]="{ 'font-weight': '600', margin: '0' }">
+            {{ tile.title }} :
+          </h3>
+          <p [ngStyle]="{ margin: '0' }">{{ tile.text }}</p>
+        </div>
+        <button class="w-24" mat-raised-button color="primary">
+          View more
+        </button>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
