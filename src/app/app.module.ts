@@ -14,6 +14,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {authInterceptorProviders} from "./interceptors/auth.interceptor";
 import { RegisterComponent } from './pages/register/register.component';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { RegisterComponent } from './pages/register/register.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     authInterceptorProviders
