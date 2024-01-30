@@ -30,10 +30,10 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: center;
+  align-items: baseline;
   column-gap: 20px;
-  row-gap: 3px;
-  margin-bottom: 15px;
+  row-gap: 5px;
+  margin-bottom: 1px;
 }
 
 .category-box-title {
@@ -46,8 +46,9 @@ footer {
 .footer-category-link {
   position: relative;
   color: hsl(0, 0%, 47%);
-  font-size: 0.875rem;;
+  font-size: 0.823rem;;
   text-transform: capitalize;
+  margin-bottom: 2px;
   transition:0.2s ease;
 }
 
