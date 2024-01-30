@@ -1,0 +1,14 @@
+<ng-container *ngIf="isOpen">
+  <button
+    variant="neutral"
+    size="small"
+    appButton
+    class="fixed top-4 right-4 z-10"
+    (click)="close()"
+  >
+    <rmx-icon name="close-line"></rmx-icon>
+  </button>
+  <div class="h-full">
+    <ng-content></ng-content>
+  </div>
+</ng-container>
