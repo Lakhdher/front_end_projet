@@ -18,13 +18,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { DefaultImagePipe } from './pages/profile/pipes/default-image.pipe';
 
-import { ProductsComponent } from './pages/products/products.component';
 import { ProductCardComponent } from './pages/products/UI/product-card/product-card.component';
 import { SidebarFilterComponent } from './pages/products/sidebar-filter/sidebar-filter.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   RiAncientGateFill,
