@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PRODUCTS } from './mock_data/products';
 
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',

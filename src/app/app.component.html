@@ -1,7 +1,8 @@
+  <app-header></app-header>
 <div
   *ngIf="this.showOverlay$ | async"
   class="w-screen h-screen fixed z-10 bg-black opacity-50"
   (click)="this.overlayService.clickedOutsideSubject.next()"
 ></div>
-<app-products></app-products>
-```
+<router-outlet></router-outlet>
+  <app-footer></app-footer>
