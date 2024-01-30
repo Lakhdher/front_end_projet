@@ -7,13 +7,14 @@ import {HomeComponent} from "./pages/home/home.component";
 import { NotFound404Component }from "./pages/not-found404/not-found404.component"
 import {LoginComponent} from "./pages/login/login.component";
 import {RegisterComponent} from "./pages/register/register.component";
+import {authGuard} from "./guards/auth.guard";
 
 
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent },
-  { path: 'favorites', component: WishlistComponent },
+  { path: 'cart', component: CartComponent,canActivate: [authGuard],},
+  { path: 'favorites', component: WishlistComponent,canActivate: [authGuard]},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
