@@ -25,7 +25,9 @@
 </header>
 <section class="content flex">
   <aside class="sticky top-6">
-    <app-sidebar-filter></app-sidebar-filter>
+    <app-sidebar-filter
+      (filterChanged)="this.applyFilter($event)"
+    ></app-sidebar-filter>
   </aside>
   <section class="content px-6 pb-10">
     <app-products-list [products]="products"></app-products-list>

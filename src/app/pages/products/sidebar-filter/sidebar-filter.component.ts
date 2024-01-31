@@ -1,12 +1,11 @@
 import {
-  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   Output,
 } from '@angular/core';
 import { COLORS } from '../mock_data/colors';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { BRANDS } from '../mock_data/brands';
 import { CATEGORIES } from '../mock_data/categories';
 
@@ -16,6 +15,7 @@ import { CATEGORIES } from '../mock_data/categories';
   styleUrls: ['./sidebar-filter.component.css'],
 })
 export class SidebarFilterComponent {
+
   @Output()
   filterChanged = new EventEmitter();
 
@@ -28,42 +28,41 @@ export class SidebarFilterComponent {
       from: [],
       to: [],
     }),
-    brands: [[]],
-    categories: [[]],
-    rating: [[]],
-    colors: [[]],
-    stock: [[]],
+    brands: this.fb.array(this.brands.map((x) => false)),
+    categories: this.fb.array(this.categories.map((x) => false)),
+    colors: this.fb.array(this.COLORS.map((x) => false)),
+    stock: [false],
   });
 
-  active_colors: { [key: string]: boolean } = {};
-
-  constructor(private readonly fb: FormBuilder) {
-    this.COLORS.forEach((color) => {
-      this.active_colors[color.value] = false;
-    });
-  }
+  constructor(private readonly fb: FormBuilder) {}
 
   @Input()
   set filters(filters: any) {
     this.filtersForm.patchValue(filters);
   }
 
-  selectBrand(value: string) {
-    console.log(value);
-  }
-
   selectColor(value: string) {
-    const colors = this.filtersForm.get('colors')?.value as string[] | null;
+    const index = this.COLORS.filter((x) => x.value === value)[0].index;
+    const colors = this.filtersForm.get('colors');
     if (colors) {
-      const index = colors.indexOf(value);
-      if (index > -1) {
-        colors.splice(index, 1);
-        this.active_colors[value] = false;
+      const new_array = colors.value;
+      if (colors.value[index] === true) {
+        new_array[index] = false;
+        colors.setValue(new_array, { emitEvent: true });
       } else {
-        colors.push(value);
-        this.active_colors[value] = true;
+        new_array[index] = true;
+        colors.value[index] = true;
       }
     }
+  }
+
+  getState(value: string) {
+    const index = this.COLORS.filter((x) => x.value === value)[0].index;
+    const colors = this.filtersForm.get('colors');
+    if (colors) {
+      return colors.value[index];
+    }
+    return
   }
 
   triggerChange() {
@@ -72,19 +71,7 @@ export class SidebarFilterComponent {
 
   resetFilters() {
     this.filtersForm.reset();
+    this.triggerChange();
   }
 
-  selectCategory(value: string) {
-    //   const categoryFormItem = this.filtersForm.get('categories');
-    //   if (!categoryFormItem) return;
-    //   const categories = categoryFormItem.value ?? [];
-    //   const isCategoryPresent = categories.includes(value);
-    //   if (isCategoryPresent) {
-    //     categoryFormItem.setValue(categories.filter((b: any) => b !== value));
-    //   } else {
-    //     categoryFormItem.setValue([...categories, value]);
-    //   }
-    // }
-    console.log(value);
-  }
 }
