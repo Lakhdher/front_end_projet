@@ -20,7 +20,7 @@ export class ApiService {
       return of([
       ]);
     }
-    return this.httpClient.get<Product[]>(`${this.backend_url}/products/advanced-search?query=${searchTerm}`)
+    return this.httpClient.get<Product[]>(`${this.backend_url}/products/advanced-search?query=${searchTerm}&skip=0&limit=10`)
       .pipe(
         catchError((err) => {
           console.error('Error fetching products:', err);
