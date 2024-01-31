@@ -43,6 +43,8 @@ import { AccordionTitle } from './pages/products/UI/accordion/directives/accordi
 import { ProductsListComponent } from './pages/products/products-list/products-list.component';
 import { ProductQuickViewComponent } from './pages/products/products-quick-view/products-quick-view.component';
 import { SideSheetComponent } from './pages/products/UI/side-sheet/side-sheet.component';
+import { AutoCompleteComponent } from './pages/auto-complete/auto-complete.component';
+import {NgOptimizedImage} from "@angular/common";
 
 const icons = {
   RiAncientGateFill,
@@ -76,7 +78,7 @@ const icons = {
     FooterComponent,
     LoginComponent,
     RegisterComponent,
-
+    AutoCompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +92,8 @@ const icons = {
     HomeComponent,
     ProfileComponent,
     CartComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    NgOptimizedImage
   ],
   providers: [
     authInterceptorProviders
