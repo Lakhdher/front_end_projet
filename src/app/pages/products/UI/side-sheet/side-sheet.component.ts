@@ -1,5 +1,5 @@
 import { Component, HostBinding, Input, NgModule } from '@angular/core';
-import { OverlayService } from '../../service/overlay.service';
+import { OverlayService } from '../../../../services/overlay.service';
 
 @Component({
   selector: 'app-side-sheet',

@@ -2,7 +2,7 @@ import { Component, Inject, OnDestroy } from '@angular/core';
 import { PRODUCTS } from './pages/products/mock_data/products';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
-import { OverlayService } from './pages/products/service/overlay.service';
+import { OverlayService } from './services/overlay.service';
 import { Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -28,7 +28,7 @@ export class AppComponent implements OnDestroy {
 
   constructor(
     public readonly overlayService: OverlayService,
-    @Inject(DOCUMENT) private readonly document: Document,
+    @Inject(DOCUMENT) private readonly document: Document
   ) {
     this.showOverlay$ = this.overlayService.showOverlay$;
     this.showOverlay$.pipe(takeUntil(this.destroy$)).subscribe((isOpen) => {
