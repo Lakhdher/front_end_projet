@@ -1,0 +1,23 @@
+<div class="absolute h-full left-8 top-0 grid place-items-center">
+  <img ngSrc="../../../assets/images/search.png" class="w-5 h-5" alt="search icon" height="512" width="512">
+</div>
+<input type="text" #productSearchInput id="searchInput" placeholder="Search for products"
+       (click)="toggleResults()"
+       class="w-full bg-gray-100 pl-8 shadow appearance-none border-gray-200 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+
+<div class="bg-gray-100 shadow-md pl-8 absolute text-gray-700 z-10 "
+     [style.width]="productSearchInput.offsetWidth + 'px'"
+     *ngIf=" searchResults?.length && showResults ">
+  <ul class="py-1">
+    <li *ngFor="let product of searchResults"
+        (click)="selectProduct(product)"
+        class="px-4 text-gray-700 focus:bg-gray-700 pt-2 hover:bg-gray-200 cursor-pointer">
+      {{ product?.name|titlecase }}:  {{ product?.description|titlecase }} <br>
+
+      <p class="text-sm text-gray-500 truncate ">
+        {{ product?.brand|titlecase }}
+      </p>
+      <hr class="mt-2">
+    </li>
+  </ul>
+</div>
