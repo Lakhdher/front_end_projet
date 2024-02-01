@@ -9,15 +9,31 @@
      [style.width]="productSearchInput.offsetWidth + 'px'"
      *ngIf=" searchResults?.length && showResults ">
   <ul class="py-1">
-    <li *ngFor="let product of searchResults"
-        (click)="selectProduct(product)"
-        class="px-4 text-gray-700 focus:bg-gray-700 pt-2 hover:bg-gray-200 cursor-pointer">
-      {{ product?.name|titlecase }}:  {{ product?.description|titlecase }} <br>
+    <li *ngFor="let product of searchResults" (click)="selectProduct(product)"
+        class="px-4 py-2 text-gray-700 focus:bg-gray-700 hover:bg-gray-200 cursor-pointer flex items-center">
 
-      <p class="text-sm text-gray-500 truncate ">
-        {{ product?.brand|titlecase }}
-      </p>
+      <div class="mr-4">
+        <img *ngIf="product.images && product.images.length > 0"
+          src="{{ product.images[0]}}" alt="{{ product.name }}" class="w-16 h-14 object-cover">
+      </div>
+
+      <div class="flex-1">
+        <div class="text-lg font-semibold">
+          {{ product?.name | titlecase }}
+        </div>
+
+
+        <div class="text-sm text-gray-500 truncate">
+          {{ product?.brand | titlecase }}
+        </div>
+
+        <div class="text-lg font-semibold mt-2">
+          ${{ product?.price | number:'1.2-2' }}
+        </div>
+      </div>
+
       <hr class="mt-2">
     </li>
+
   </ul>
 </div>

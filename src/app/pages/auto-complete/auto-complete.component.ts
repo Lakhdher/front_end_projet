@@ -42,7 +42,7 @@ export class AutoCompleteComponent implements OnInit {
       ).subscribe({
       next: (data: any) => {
         console.log(data);
-        this.searchResults = data[0]
+        this.searchResults = data
       },
       error: err => {
         console.log(err);
