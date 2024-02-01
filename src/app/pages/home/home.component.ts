@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {NgClass, NgForOf, NgStyle} from "@angular/common";
+import {AsyncPipe, NgClass, NgForOf, NgStyle} from "@angular/common";
 import {MatButtonModule} from '@angular/material/button';
+import {ProductsService} from "../../services/products.service";
+import {Observable} from "rxjs";
 
 export interface Tile {
   cols: number;
@@ -20,15 +22,19 @@ export interface Tile {
     NgForOf,
     NgClass,
     MatButtonModule,
-    NgStyle
+    NgStyle,
+    AsyncPipe
   ]
 })
 export class HomeComponent {
-  tiles: Tile[] = [
-    {image: 'assets/homeProducts/amazon.jpg', cols: 2, rows: 4,title: 'Amazon',text:'Amazon newest product'},
-    {image: 'assets/homeProducts/casque.jpg', cols: 1, rows: 2,title:'Headset',text:'for a better lifestyle'},
-    {image: 'assets/homeProducts/camera.jpg', cols: 1, rows: 2,title:'Camera',text:'for a better quality'},
-    {image: 'assets/homeProducts/montre.jpg', cols: 2, rows: 1,title:'Watch',text:'for a better time'},
-    {image: 'assets/homeProducts/combo.jpg', cols: 2, rows: 1,title:'Combo',text:'for a better price'},
-  ];
+  products$: Observable<any[]>;
+
+  constructor(
+    private productsService: ProductsService,
+  ) {
+    this.products$ = this.productsService.getProducts(4,3.75);
+
+  }
+
+
 }
