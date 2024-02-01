@@ -18,8 +18,6 @@ export class ProductsListComponent {
   }
   @ViewChild(ProductQuickViewComponent, { static: true })
   productQuickViewRef?: ProductQuickViewComponent;
-  @Input()
-  products?: any[];
   private readonly activeProductSubject = new Subject<any>();
   readonly activeProduct$: Observable<any> = this.activeProductSubject
     .asObservable()
@@ -33,16 +31,13 @@ export class ProductsListComponent {
       })
     );
 
-  products$: Observable<any[]>;
+  @Input()
+  products$?: Observable<any[]>;
 
-  constructor(
-    private readonly overlay: OverlayService,
-    private productsService: ProductsService
-  ) {
+  constructor(private readonly overlay: OverlayService) {
     overlay.clickedOutside$.subscribe(() => {
       this.productQuickViewRef?.close();
     });
-    this.products$ = this.productsService.getProducts();
   }
   openQuickView(product: any) {
     this.productQuickViewRef?.open();

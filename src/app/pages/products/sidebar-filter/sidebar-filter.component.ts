@@ -1,4 +1,5 @@
 import {
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -8,6 +9,8 @@ import { COLORS } from '../mock_data/colors';
 import { FormBuilder } from '@angular/forms';
 import { BRANDS } from '../mock_data/brands';
 import { CATEGORIES } from '../mock_data/categories';
+import { ProductsService } from 'src/app/services/products.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar-filter',
@@ -15,26 +18,63 @@ import { CATEGORIES } from '../mock_data/categories';
   styleUrls: ['./sidebar-filter.component.css'],
 })
 export class SidebarFilterComponent {
-
   @Output()
   filterChanged = new EventEmitter();
 
-  COLORS = COLORS;
-  brands = BRANDS;
-  categories = CATEGORIES;
+  COLORS: any[] = COLORS;
+  brands: any[] = [];
+  categories: any[] = [];
+
+  brands$: Observable<string[]>;
+  categories$: Observable<string[]>;
 
   filtersForm = this.fb.group({
-    priceRange: this.fb.group({
-      from: [],
-      to: [],
-    }),
+    priceRange: this.fb.group(
+      {
+        from: [],
+        to: [],
+      },
+      {
+        validators: [
+          (group) => {
+            const from = group.get('from')?.value;
+            const to = group.get('to')?.value;
+            if (from && to && from > to) {
+              return {
+                range: true,
+              };
+            }
+            return null;
+          },
+        ],
+      }
+    ),
     brands: this.fb.array(this.brands.map((x) => false)),
     categories: this.fb.array(this.categories.map((x) => false)),
     colors: this.fb.array(this.COLORS.map((x) => false)),
-    stock: [false],
   });
-
-  constructor(private readonly fb: FormBuilder) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly productsService: ProductsService,
+    private readonly cdr: ChangeDetectorRef
+  ) {
+    this.brands$ = this.productsService.getBrands();
+    this.brands$.subscribe((brands) => {
+      this.brands = brands;
+      this.filtersForm.setControl(
+        'brands',
+        this.fb.array(this.brands.map((x) => false))
+      );
+    });
+    this.categories$ = this.productsService.getCategories();
+    this.categories$.subscribe((categories) => {
+      this.categories = categories;
+      this.filtersForm.setControl(
+        'categories',
+        this.fb.array(this.categories.map((x) => false))
+      );
+    });
+  }
 
   @Input()
   set filters(filters: any) {
@@ -62,16 +102,34 @@ export class SidebarFilterComponent {
     if (colors) {
       return colors.value[index];
     }
-    return
+    return;
   }
 
   triggerChange() {
-    this.filterChanged.emit(this.filtersForm.value);
+    const brands_to_emit = this.brands.filter(
+      (x, index) => this.filtersForm.get('brands')?.value[index]
+    );
+    const categories_to_emit = this.categories.filter(
+      (x, index) => this.filtersForm.get('categories')?.value[index]
+    );
+
+    const colors_objects_to_emit = this.COLORS.filter(
+      (x, index) => this.filtersForm.get('colors')?.value[index]
+    );
+    const colors_to_emit = colors_objects_to_emit.map((x) => x.label);
+    const filters = {
+      colors: colors_to_emit,
+      minPrice: this.filtersForm.get('priceRange')?.value.from,
+      maxPrice: this.filtersForm.get('priceRange')?.value.to,
+      brands: brands_to_emit,
+      categories: categories_to_emit,
+    };
+    this.filterChanged.emit(filters);
   }
 
   resetFilters() {
     this.filtersForm.reset();
+    this.cdr.detectChanges();
     this.triggerChange();
   }
-
 }
