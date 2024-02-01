@@ -117,8 +117,6 @@ const MOUSE = [
   },
 ];
 
-const CHAIR: never[] = [];
-
 const DESK = [
   {
     name: 'Ikea LAGKAPTEN White Desk',
@@ -338,7 +336,6 @@ const MONITORS = [
 export const PRODUCTS = [
   ...KEYBOARDS,
   ...MOUSE,
-  ...CHAIR,
   ...DESK,
   ...HEADPHONES,
   ...MONITORS,
