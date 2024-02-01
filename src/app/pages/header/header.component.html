@@ -52,7 +52,15 @@
   <div class="flex-1 px-6 relative">
     <app-auto-complete/>
   </div>
+    <div *ngIf="(status$| async)"
+    class="w-10 h-10 mr-4"  routerLink="/profile"
+    >
+      <a
+        class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
 
+        routerLinkActive="text-primary"><img   src="assets/images/profile-user.png" alt="profile" class="bg-primary text-white rounded-md"/>
+        </a>
+    </div>
   <div routerLink="login" *ngIf="!(status$ | async)"
        class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2"
   >
