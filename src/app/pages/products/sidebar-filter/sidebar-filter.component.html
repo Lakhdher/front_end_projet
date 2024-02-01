@@ -32,16 +32,12 @@
       <ng-template appAccordionContent>
         <div class="p-4 flex flex-col gap-2">
           <ng-container
-            *ngFor="let brand of brands; let i = index"
+            *ngFor="let brand of brands$ | async; let i = index"
             formArrayName="brands"
           >
             <div class="flex gap-2 m-1">
-              <input
-                type="checkbox"
-                [value]="brand.name"
-                [formControlName]="i"
-              />
-              <span> {{ brand.name }} </span>
+              <input type="checkbox" [value]="brand" [formControlName]="i" />
+              <span> {{ brand }} </span>
             </div>
           </ng-container>
         </div>
@@ -51,16 +47,12 @@
       <ng-template appAccordionContent>
         <div class="p-4 flex flex-col gap-2">
           <ng-container
-            *ngFor="let category of categories; let i = index"
+            *ngFor="let category of categories$ | async; let i = index"
             formArrayName="categories"
           >
             <div class="flex gap-2 m-1">
-              <input
-                type="checkbox"
-                [value]="category.name"
-                [formControlName]="i"
-              />
-              <span> {{ category.name }} </span>
+              <input type="checkbox" [value]="category" [formControlName]="i" />
+              <span> {{ category }} </span>
             </div>
           </ng-container>
         </div>
@@ -86,16 +78,6 @@
               </li>
             </ng-container>
           </ul>
-        </div>
-      </ng-template>
-    </app-accordion-item>
-    <app-accordion-item title="Stock" [isOpen]="true">
-      <ng-template appAccordionContent>
-        <div class="p-4 flex flex-col gap-2">
-          <div class="flex gap-2 m-1">
-            <input type="checkbox" label="In stock" formControlName="stock" />
-            <span> In stock</span>
-          </div>
         </div>
       </ng-template>
     </app-accordion-item>

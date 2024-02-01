@@ -29,7 +29,6 @@ export class ProductQuickViewComponent implements OnInit {
 
   open() {
     this.sideSheetRef?.open();
-    console.log(this.product?.specs);
   }
 
   close() {
