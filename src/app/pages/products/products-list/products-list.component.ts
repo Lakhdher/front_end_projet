@@ -19,27 +19,16 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent  {
-  promises = promises;
   addToCart($event: any) {
     throw new Error('Method not implemented.');
   }
   @ViewChild(ProductQuickViewComponent, { static: true })
   productQuickViewRef?: ProductQuickViewComponent;
-  private readonly activeProductSubject = new Subject<any>();
-  readonly activeProduct$: Observable<any> = this.activeProductSubject
-    .asObservable()
-    .pipe(
-      filter((product) => !!product),
-      map((product) => {
-        return {
-          ...product,
-          promises: this.promises,
-        };
-      })
-    );
 
   @Input()
   products: Product[] = [];
+
+  activeProduct$: Observable<any> = this.overlay.activeProduct$;
 
   constructor(private readonly overlay: OverlayService) {
     overlay.clickedOutside$.subscribe(() => {
@@ -49,6 +38,6 @@ export class ProductsListComponent  {
 
   openQuickView(product: any) {
     this.productQuickViewRef?.open();
-    this.activeProductSubject.next(product);
+    this.overlay.activeProductSubject.next(product);
   }
 }
