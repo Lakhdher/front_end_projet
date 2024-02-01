@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, map } from 'rxjs';
+import {BehaviorSubject, catchError, map, tap} from 'rxjs';
 import { environment } from '../../environments/environment.development';
 
 // user model
@@ -38,9 +38,12 @@ export class AuthService {
 
   signIn(email: string, password: string) {
     return this.http.post<any>(this.SignInURL, { email, password }).pipe(
-      map((res) => {
+      tap((res) => {
         this.setSession(res);
         this.isLoggedInSource.next(true);
+      }),
+      catchError((error) => {
+        throw error;
       })
     );
   }

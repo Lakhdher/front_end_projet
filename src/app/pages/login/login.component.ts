@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,18 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  form: FormGroup ;
+  form: FormGroup;
   returnUrl: string | undefined;
 
-  constructor(private fb:FormBuilder,private authService :AuthService,
-              private router: Router,route: ActivatedRoute) {
+  constructor(private fb: FormBuilder, private authService: AuthService,private toaster: ToastrService,
+              private router: Router, route: ActivatedRoute) {
 
-   this.form = this.fb.group({
-      email: ['', [Validators.required,Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(6)]]
+    this.form = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
     this.returnUrl = route.snapshot.queryParams['return'];
   }
-
-
 
 
   login() {
@@ -31,16 +30,22 @@ export class LoginComponent {
     if (val.email && val.password) {
       this.authService.signIn(val.email, val.password)
         .subscribe(
-          () => {
-            console.log("User is logged in");
-            if (this.returnUrl) {
-              this.router.navigate([this.returnUrl]);
-            } else {
-              this.router.navigateByUrl('/');
-
+          {
+            next: () => {
+              this.router.navigateByUrl(this.returnUrl || '/');
+            },
+            error: (error) => {
+              this.toaster.warning(
+                'Invalid email or password. Please try again.',
+                'Error',
+                {
+                  timeOut: 1000,
+                },
+              );
             }
-          }
-        );
+    }
+    )
+      ;
     }
 
   }
