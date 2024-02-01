@@ -116,7 +116,7 @@ export class SidebarFilterComponent {
     const colors_objects_to_emit = this.COLORS.filter(
       (x, index) => this.filtersForm.get('colors')?.value[index]
     );
-    const colors_to_emit = colors_objects_to_emit.map((x) => x.label);
+    const colors_to_emit = colors_objects_to_emit.map((x) => x.value);
     const filters = {
       colors: colors_to_emit,
       minPrice: this.filtersForm.get('priceRange')?.value.from,
