@@ -8,6 +8,9 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
+  products: any[] = [];
+  size: number = 0;
+
   applyFilter($event: any) {
     if ($event.maxPrice === null) $event.maxPrice = 1000000000000;
     if ($event.minPrice === null) $event.minPrice = 0;
@@ -21,7 +24,9 @@ export class ProductsComponent {
       skip: parseInt('0'),
       limit: parseInt('100'),
     };
-    this.products$ = this.productsService.getFilteredProducts(body);
+    this.productsService.getFilteredProducts(body).subscribe((products) => {
+      this.products = products;
+    });
   }
   openQuickView(arg0: any) {
     throw new Error('Method not implemented.');
@@ -30,10 +35,11 @@ export class ProductsComponent {
     throw new Error('Method not implemented.');
   }
 
-  products$: Observable<any[]>;
   searchQuery: string = '';
 
   constructor(private readonly productsService: ProductsService) {
-    this.products$ = productsService.getProducts();
+    productsService.getProducts().subscribe((products) => {
+      this.products = products;
+    });
   }
 }

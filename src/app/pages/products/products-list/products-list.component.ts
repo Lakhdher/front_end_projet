@@ -1,4 +1,10 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ProductQuickViewComponent } from '../products-quick-view/products-quick-view.component';
 import { OverlayService } from '../../../services/overlay.service';
 import { Observable, Subject, filter, map } from 'rxjs';
@@ -11,7 +17,7 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent {
+export class ProductsListComponent  {
   promises = promises;
   addToCart($event: any) {
     throw new Error('Method not implemented.');
@@ -32,13 +38,14 @@ export class ProductsListComponent {
     );
 
   @Input()
-  products$?: Observable<any[]>;
+  products: any[] = [];
 
   constructor(private readonly overlay: OverlayService) {
     overlay.clickedOutside$.subscribe(() => {
       this.productQuickViewRef?.close();
     });
   }
+
   openQuickView(product: any) {
     this.productQuickViewRef?.open();
     this.activeProductSubject.next(product);

@@ -1,9 +1,9 @@
-<ng-container *ngIf="products$ | async">
-  <ng-container *ngIf="products$ | async; else noProducts">
+<ng-container *ngIf="products">
+  <ng-container *ngIf="products.length!=0; else noProducts">
     <ul
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
     >
-      <li *ngFor="let product of products$ | async">
+      <li *ngFor="let product of products">
         <app-product-card
           [title]="product.name"
           [price]="product.price"
