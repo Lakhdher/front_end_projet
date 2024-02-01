@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  Inject,
   Input,
   OnInit,
   Output,
@@ -26,12 +25,11 @@ export class ProductQuickViewComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.product);
-  }
+  ngOnInit(): void {}
 
   open() {
     this.sideSheetRef?.open();
+    console.log(this.product?.specs);
   }
 
   close() {

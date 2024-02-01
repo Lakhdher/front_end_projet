@@ -64,13 +64,13 @@
           </tr>
         </thead>
         <tbody>
-          <ng-container *ngFor="let spec of this.product.specifications">
+          <ng-container *ngFor="let label of this.product.specs | keyvalue">
             <tr class="h-8">
               <td>
-                <p class="font-medium">{{ spec.label }}</p>
+                <p class="font-medium">{{ label.key }}</p>
               </td>
               <td>
-                <p>{{ spec.value }}</p>
+                <p>{{ label.value }}</p>
               </td>
             </tr>
           </ng-container>

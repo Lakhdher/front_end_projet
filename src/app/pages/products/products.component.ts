@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PRODUCTS } from './mock_data/products';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -20,5 +21,6 @@ export class ProductsComponent {
   products = PRODUCTS;
   searchQuery: string = '';
 
-  constructor() {}
+  constructor() {
+  }
 }
