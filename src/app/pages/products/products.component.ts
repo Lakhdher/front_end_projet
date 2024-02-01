@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./products.component.css'],
 })
 export class ProductsComponent {
-  products: any[] = [];
+  products: Product[] = [];
   size: number = 0;
 
   applyFilter($event: any) {

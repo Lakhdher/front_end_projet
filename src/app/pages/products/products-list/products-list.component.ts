@@ -11,6 +11,7 @@ import { Observable, Subject, filter, map } from 'rxjs';
 import { promises } from '../mock_data/promises';
 import { SPECIFICATION_KEYS } from '../mock_data/specifications';
 import { ProductsService } from 'src/app/services/products.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products-list',
@@ -38,7 +39,7 @@ export class ProductsListComponent  {
     );
 
   @Input()
-  products: any[] = [];
+  products: Product[] = [];
 
   constructor(private readonly overlay: OverlayService) {
     overlay.clickedOutside$.subscribe(() => {
