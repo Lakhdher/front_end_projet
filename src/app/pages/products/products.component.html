@@ -1,0 +1,35 @@
+<header class="mb-4 mt-2">
+  <h1 class="text-2xl font-semibold">Products</h1>
+  <ng-container *ngIf="this.searchQuery; else defaultSubtitle">
+    <p class="text-gray-500">
+      Searching for <strong>{{ searchQuery }}</strong>
+      <span class="ml-2"
+        ><button
+          (click)="this.clearSearch()"
+          wfh
+          size="xsmall"
+          variant="neutral"
+        >
+          Clear Search
+        </button></span
+      >
+    </p>
+  </ng-container>
+
+  <ng-template #defaultSubtitle>
+    <p class="text-gray-500">
+      Showing all available products. Use the filters to narrow down the
+      results!
+    </p>
+  </ng-template>
+</header>
+<section class="content flex">
+  <aside class="sticky top-6">
+    <app-sidebar-filter
+      (filterChanged)="this.applyFilter($event)"
+    ></app-sidebar-filter>
+  </aside>
+  <section class="content px-6 pb-10">
+    <app-products-list [products]="this.products" ></app-products-list>
+  </section>
+</section>

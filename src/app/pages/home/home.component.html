@@ -1,0 +1,23 @@
+<div>
+  <mat-grid-list    cols="4" rowHeight="3:2">
+    <mat-grid-tile
+
+      *ngFor="let product of products$ | async"
+      [colspan]="2 "
+      [rowspan]="2"
+    >
+      <img class="object-fill h-4/5" src="{{ product.images[0] }}" alt="{{ product.images[0] }}" />
+      <mat-grid-tile-footer class="flex justify-between">
+        <div class="flex items-center">
+          <h4 [ngStyle]="{ 'font-weight': '500', margin: '0' }">
+            {{ product.name }}
+          </h4>
+
+        </div>
+        <button  class="w-24" mat-raised-button color="primary">
+          View more
+        </button>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

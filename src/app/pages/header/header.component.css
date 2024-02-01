@@ -1,0 +1,3 @@
+li:hover svg {
+  fill: #000; /* Change to your desired hover color, e.g., black */
+}

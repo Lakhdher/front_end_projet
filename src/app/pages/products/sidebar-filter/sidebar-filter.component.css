@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+section {
+  border: 1px solid #e5e5e5;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.filter__colors .active {
+  border: 1px solid #3490dc;
+  background-color: #bee3f8;
+}
