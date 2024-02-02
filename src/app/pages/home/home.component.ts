@@ -28,6 +28,7 @@ export interface Tile {
     MatButtonModule,
     NgStyle,
     AsyncPipe,
+    ProductQuickViewComponent
   ],
 })
 export class HomeComponent {

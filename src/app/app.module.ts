@@ -67,8 +67,6 @@ const icons = {
     AccordionHeader,
     AccordionTitle,
     ProductsListComponent,
-    ProductQuickViewComponent,
-    SideSheetComponent,
     HeaderComponent,
     ProductsComponent,
     WishlistComponent,
@@ -85,16 +83,17 @@ const icons = {
     RemixIconModule.configure(icons),
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
+    ProductQuickViewComponent,
     ToastrModule.forRoot(),
     HomeComponent,
     ProfileComponent,
     CartComponent,
     DefaultImagePipe,
     NgOptimizedImage,
+    SideSheetComponent
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  exports: [ProductQuickViewComponent],
+  exports: [ProductQuickViewComponent, SideSheetComponent],
 })
 export class AppModule {}
