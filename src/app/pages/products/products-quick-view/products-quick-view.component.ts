@@ -7,11 +7,21 @@ import {
   ViewChild,
 } from '@angular/core';
 import { SideSheetComponent } from '../UI/side-sheet/side-sheet.component';
+import {CurrencyPipe, KeyValuePipe, NgFor, NgForOf, NgIf} from "@angular/common";
+import {AppModule} from "../../../app.module";
 
 @Component({
   selector: 'app-product-quick-view',
   templateUrl: './products-quick-view.component.html',
   styleUrls: ['./products-quick-view.component.css'],
+  imports: [
+    CurrencyPipe,
+    NgIf,
+    NgForOf,
+    KeyValuePipe,
+    SideSheetComponent
+  ],
+  standalone: true
 })
 export class ProductQuickViewComponent implements OnInit {
   @Input()
