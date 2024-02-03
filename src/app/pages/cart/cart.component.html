@@ -1,7 +1,7 @@
 <p class="text-4xl flex justify-center m-10">Cart</p>
 <mat-divider></mat-divider>
 <h1 *ngIf="products?.length==0" >There are no products in your cart</h1>
-<h1 *ngIf="products?.length==1" >There is {{this.products?.length}} products in your cart</h1>
+<h1 *ngIf="products?.length==1" >There is {{this.products?.length}} product in your cart</h1>
 <h1 *ngIf="products?.length>1" >There are {{this.products?.length}} products in your cart</h1>
 
 <table class="w-full " *ngIf="this.products?.length">

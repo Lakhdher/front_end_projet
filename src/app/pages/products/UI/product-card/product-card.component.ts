@@ -7,31 +7,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ProductCardComponent {
   @Input()
-  images?: string[];
-
-  @Input()
-  title!: string;
-
-  @Input()
-  price!: number;
-
-  @Input()
-  wishlisted?: boolean;
-
-  @Input()
-  originalPrice?: number;
-
-  @Input()
-  subtitle?: string;
-
-  @Input()
-  link?: string;
+  product!: any;
 
   @Output()
   quickView = new EventEmitter<void>();
 
   @Output()
-  addToCart = new EventEmitter<void>();
+  addToCart = new EventEmitter<any>();
 
   @Output()
   addToWishlist = new EventEmitter<void>();
@@ -41,15 +23,15 @@ export class ProductCardComponent {
   constructor() {}
 
   ngOnInit(): void {
-    if (this.originalPrice && this.price) {
-      this.priceDifference = this.originalPrice - this.price;
+    if (this.product.originalPrice && this.product.price) {
+      this.priceDifference = this.product.originalPrice - this.product.price;
       this.discount = this.getDiscountPercentage();
     }
   }
 
   getDiscountPercentage(): number {
-    if (this.originalPrice && this.price) {
-      return Math.round((this.priceDifference / this.originalPrice) * 100);
+    if (this.product.originalPrice && this.product.price) {
+      return Math.round((this.priceDifference / this.product.originalPrice) * 100);
     }
     return -1;
   }

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { Product } from 'src/app/models/product';
 import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
-import { AppModule } from 'src/app/app.module';
+import {CartService} from "../../services/cart.service";
 
 export interface Tile {
   cols: number;
@@ -39,7 +39,8 @@ export class HomeComponent {
   products$: Observable<any[]>;
   constructor(
     private productsService: ProductsService,
-    private overlay: OverlayService
+    private overlay: OverlayService,
+    private cartService: CartService
   ) {
     this.products$ = this.productsService.getProducts(4, 3.75);
     overlay.clickedOutside$.subscribe(() => {
@@ -53,6 +54,6 @@ export class HomeComponent {
   }
 
   addToCart($event: any) {
-    throw new Error('Method not implemented.');
+    this.cartService.setProduct($event);
   }
 }
