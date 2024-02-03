@@ -5,11 +5,9 @@
     >
       <li *ngFor="let product of products">
         <app-product-card
-          [title]="product.name"
-          [price]="product.price"
-          [originalPrice]="product.originalPrice"
-          [images]="product.images"
+          [product]="product"
           (quickView)="this.openQuickView(product)"
+          (addToCart)="this.addToCart($event)"
         ></app-product-card>
       </li>
     </ul>
