@@ -1,0 +1,133 @@
+<div class="mt-4 mx-14 ">
+  <h1 class="text-gray-600">
+    Select your pick up store:
+  </h1>
+  <div class="grid grid-cols-2 gap-8 w-2/3 mx-auto">
+    <div>
+      <h3 class="p-4">
+        All stores near you:
+      </h3>
+      <ul class="justify-center " *ngFor="let store of stores">
+        <li class="mt-4">
+          <div>
+            <li (click)="onStoreSelected(store.name)" [ngStyle]="
+            {'border-color': selectedStore === store.name ? '#2563EB' : 'gray'}"
+            class="border-2 border-blue-500 rounded-lg p-3">
+              <div class="flex items-center space-x-4 rtl:space-x-reverse">
+                <div class="flex-1 ml-2 ">
+                  <p class="text-primary font-medium ">
+                    {{store.name}}
+                  </p>
+                  <p class="text-xs text-gray-400">
+                    {{store.distance}}
+                  </p>
+                </div>
+                <div class="inline-flex items-center text-base text-green-500">
+                  {{store.availability}}
+                </div>
+              </div>
+            </li>
+            <div *ngIf="selectedStore === store.name">
+              <div class="flex flex-row-reverse mt-1">   <!--todo:  if selected     -->
+                <div class="inline-flex items-center text-xs text-gray-600">{{store.checkInRequired}}</div>
+              </div>
+              <hr class="w-2/3 mx-auto mt-2 ">
+              <h3>
+                Select a pick up date
+              </h3>
+              <div class="mb-4 flex flex-row gap-4">
+                <div
+                  *ngFor="let day of getDates(3)"
+                  class="flex-shrink-0 w-10 h-10 rounded-full border flex items-center justify-center"
+                  [ngClass]="{'bg-blue-500 text-white': day.getDate() === selectedDate.getDate()}"
+                  (click)="selectedDate = day"
+                >
+                  <span>{{ day.getDate() }}</span>
+                </div>
+              </div>
+
+              <h3 class=" text-xs">
+                Next select a check-in window
+              </h3>
+              <div>
+                <p class="text-xs m-0 p-0 text-gray-600">We currently require a check-in window for pick up orders to
+                  help
+                  us
+                  manage capacity and ensure a safe
+                  experience for our customers and employees.
+                </p>
+                <div>
+
+                  <button data-dropdown-toggle="dropdownDelay" data-dropdown-delay="200"
+                          data-dropdown-trigger="hover"
+                          class="bg-gray-100 text-black  focus:ring-1 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
+                          (click)="showDropDown = !showDropDown"
+                          type="button">check-in window
+                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                         viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 4 4 4-4"/>
+                    </svg>
+                  </button>
+
+                  <div
+                    [ngClass]="{'hidden': !showDropDown}"
+                    class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-44 ">
+                    <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDelayButton">
+                      <li (click)="onWindowSelected('Window 1')">
+                        <p class="block px-4 py-2 text-gray-600 hover:bg-gray-50 cursor-pointer ">Window 1</p>
+                      </li>
+                      <li (click)="onWindowSelected('Window 1')">
+                        <p class="block px-4 py-2 hover:bg-gray-50 cursor-pointer ">Window 2</p>
+                      </li>
+                      <li (click)="onWindowSelected('Window 1')">
+                        <p class="block px-4 py-2 hover:bg-gray-50 cursor-pointer  ">Window 3</p>
+                      </li>
+                      <li (click)="onWindowSelected('Window 1')">
+                        <p class="block px-4 py-2 hover:bg-gray-50 cursor-pointer  ">Window 4</p>
+                      </li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="p-5 w-2/3">
+      <h3 class="font-bold">
+        About our pick up stores
+      </h3>
+      <p class="py-4 text-gray-600">
+        14812 Ariana ,TUNSIE
+        <br>
+        (216) 936-1861-6848 <br><br>
+        Sat 9:00am - 9:00pm <br>
+        Mon-Fri 10:00am - 6:00pm <br>
+        Sun 10:00am - 6:00pm <br>
+
+        <br>
+        We'll email you when your order is ready for pick up. Your order will be held for 3 days from the time it's
+        ready for pick up.
+      </p>
+
+      <h3 class="font-bold">
+        Wait time may vary
+      </h3>
+      <p class="py-4 text-gray-600">
+        You will be given estimated wait time when you check in. Wait time may vary based on the number of orders and
+        the time of day. <br> <br>
+        Please note that we are currently experiencing high demand for pick up orders and wait times may be longer than
+      </p>
+    </div>
+    <button class="bg-slate-800 mx-auto text-white rounded-lg px-4 py-2 mt-4"
+            (click)="onPickUpRequest()"
+    >
+      Send pick up request
+    </button>
+  </div>
+</div>

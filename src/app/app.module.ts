@@ -43,6 +43,9 @@ import { ProductQuickViewComponent } from './pages/products/products-quick-view/
 import { SideSheetComponent } from './pages/products/UI/side-sheet/side-sheet.component';
 import { AutoCompleteComponent } from './pages/auto-complete/auto-complete.component';
 import { NgOptimizedImage } from '@angular/common';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { DeliveryComponent } from './pages/checkout/delivery/delivery.component';
+import { PickUpComponent } from './pages/checkout/pick-up/pick-up.component';
 
 const icons = {
   RiAncientGateFill,
@@ -75,6 +78,9 @@ const icons = {
     LoginComponent,
     RegisterComponent,
     AutoCompleteComponent,
+    CheckoutComponent,
+    DeliveryComponent,
+    PickUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,7 +96,8 @@ const icons = {
     CartComponent,
     DefaultImagePipe,
     NgOptimizedImage,
-    SideSheetComponent
+    SideSheetComponent,
+    BrowserAnimationsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
