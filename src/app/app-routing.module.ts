@@ -12,7 +12,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
-  { path: 'cart', component: CartComponent, canActivate: [authGuard] },
+  { path: 'cart', component: CartComponent },
   { path: 'favorites', component: WishlistComponent, canActivate: [authGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
