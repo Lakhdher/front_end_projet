@@ -12,15 +12,15 @@ import { promises } from '../mock_data/promises';
 import { SPECIFICATION_KEYS } from '../mock_data/specifications';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
-import {CartService} from "../../../services/cart.service";
+import { CartService } from '../../../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
 })
-export class ProductsListComponent  {
-
+export class ProductsListComponent {
   @ViewChild(ProductQuickViewComponent, { static: true })
   productQuickViewRef?: ProductQuickViewComponent;
 
@@ -29,16 +29,37 @@ export class ProductsListComponent  {
 
   activeProduct$: Observable<any> = this.overlay.activeProduct$;
 
-  constructor(private readonly overlay: OverlayService,private cartService:CartService) {
+  constructor(
+    private readonly overlay: OverlayService,
+    private cartService: CartService,
+    private productService: ProductsService,
+    private toaster: ToastrService
+  ) {
     overlay.clickedOutside$.subscribe(() => {
       this.productQuickViewRef?.close();
     });
   }
-  addToCart($event: any) {
-    this.cartService.setProduct($event);
+  addToCart(product: Product) {
+    this.cartService.setProduct(product);
   }
-  openQuickView(product: any) {
+  openQuickView(product: Product) {
     this.productQuickViewRef?.open();
     this.overlay.activeProductSubject.next(product);
+  }
+
+  addToWishlist(product: Product) {
+    return this.productService.addToWishlist(product.id as number).subscribe(
+      (res) => {
+        console.log(res);
+        if (res === 'Added to Wishlist Successfully!') {
+          this.toaster.success('Product added to wishlist');
+        } else {
+          this.toaster.error('Product already in wishlist');
+        }
+      },
+      (err) => {
+        this.toaster.error('API Error, Please try again later.');
+      }
+    );
   }
 }
