@@ -8,7 +8,8 @@ import { Product } from 'src/app/models/product';
 })
 export class WishlistCardComponent {
   @Input() product!: Product;
-  addToCart: any;
+  @Output()
+  addToCart = new EventEmitter<void>();
 
   @Output()
   deleteFromWishlist = new EventEmitter<void>();

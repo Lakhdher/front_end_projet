@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {ToastrService} from "ngx-toastr";
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
-  providedIn: 'root' // Make service available globally
+  providedIn: 'root', // Make service available globally
 })
 export class CartService {
   constructor(private toaster: ToastrService) {}
-  private productSubject = new BehaviorSubject<any>(localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart') || '{}') : []);
+  private productSubject = new BehaviorSubject<any>(
+    localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart') || '{}')
+      : []
+  );
   products$ = this.productSubject.asObservable();
   intermediate: any[] = [];
   setProduct(product: any) {
@@ -18,13 +22,13 @@ export class CartService {
         'Error',
         {
           timeOut: 3000,
-        },
+        }
       );
       throw new Error('Product already exists in cart');
-
     }
     this.intermediate.push(product);
     this.productSubject.next(this.intermediate);
+    this.toaster.success('Product added to cart');
     localStorage.setItem('cart', JSON.stringify(this.intermediate));
   }
 }
