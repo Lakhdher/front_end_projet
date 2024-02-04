@@ -44,6 +44,9 @@ import { ProductQuickViewComponent } from './pages/products/products-quick-view/
 import { SideSheetComponent } from './pages/products/UI/side-sheet/side-sheet.component';
 import { AutoCompleteComponent } from './pages/auto-complete/auto-complete.component';
 import { NgOptimizedImage } from '@angular/common';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { DeliveryComponent } from './pages/checkout/delivery/delivery.component';
+import { PickUpComponent } from './pages/checkout/pick-up/pick-up.component';
 import { WishlistCardComponent } from './pages/wishlist/wishlist-card/wishlist-card.component';
 
 const icons = {
@@ -77,7 +80,11 @@ const icons = {
     LoginComponent,
     RegisterComponent,
     AutoCompleteComponent,
+    CheckoutComponent,
+    DeliveryComponent,
+    PickUpComponent,
     WishlistCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -94,6 +101,7 @@ const icons = {
     DefaultImagePipe,
     NgOptimizedImage,
     SideSheetComponent,
+    BrowserAnimationsModule,
     ButtonComponent,
   ],
   providers: [authInterceptorProviders],
