@@ -9,8 +9,8 @@ import {
   selector: 'button[appButton]',
   template: ` <ng-content></ng-content> `,
   styleUrls: ['./button.component.css'],
+  standalone: true,
 })
-
 export class ButtonComponent {
   @Input()
   class = '';

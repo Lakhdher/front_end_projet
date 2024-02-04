@@ -43,6 +43,7 @@ import { ProductQuickViewComponent } from './pages/products/products-quick-view/
 import { SideSheetComponent } from './pages/products/UI/side-sheet/side-sheet.component';
 import { AutoCompleteComponent } from './pages/auto-complete/auto-complete.component';
 import { NgOptimizedImage } from '@angular/common';
+import { WishlistCardComponent } from './pages/wishlist/wishlist-card/wishlist-card.component';
 
 const icons = {
   RiAncientGateFill,
@@ -60,7 +61,6 @@ const icons = {
     ProductCardComponent,
     SidebarFilterComponent,
     AccordionComponent,
-    ButtonComponent,
     TogglePipe,
     CheckboxComponent,
     AccordionContent,
@@ -75,6 +75,7 @@ const icons = {
     LoginComponent,
     RegisterComponent,
     AutoCompleteComponent,
+    WishlistCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,10 +91,11 @@ const icons = {
     CartComponent,
     DefaultImagePipe,
     NgOptimizedImage,
-    SideSheetComponent
+    SideSheetComponent,
+    ButtonComponent,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  exports: [ProductQuickViewComponent, SideSheetComponent],
+  exports: [ProductQuickViewComponent, SideSheetComponent, ButtonComponent],
 })
 export class AppModule {}
