@@ -1,7 +1,12 @@
 <header class="relative">
-  <button class="absolute -right-1 -top-1" (click)="this.addToWishlist.emit()">
-    <rmx-icon name="heart-3-line"></rmx-icon>
-  </button>
+  <div class="absolute -right-1 -top-1">
+    <button *ngIf="product.wishlist" (click)="this.removeFromWishlit.emit()">
+      <rmx-icon name="heart-3-fill"></rmx-icon>
+    </button>
+    <button *ngIf="!product.wishlist" (click)="this.addToWishlist.emit()">
+      <rmx-icon name="heart-3-line"></rmx-icon>
+    </button>
+  </div>
   <ng-container *ngIf="product.images">
     <img [src]="product.images[0]" [alt]="product.title" class="aspect-square object-contain" />
   </ng-container>

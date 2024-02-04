@@ -6,16 +6,32 @@ import {
   Output,
 } from '@angular/core';
 import { COLORS } from '../mock_data/colors';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { BRANDS } from '../mock_data/brands';
 import { CATEGORIES } from '../mock_data/categories';
 import { ProductsService } from 'src/app/services/products.service';
 import { Observable } from 'rxjs';
+import { AccordionComponent } from '../UI/accordion/accordion.component';
+import { AccordionItem } from '../UI/accordion/directives/accordion-item.directive';
+import { CommonModule } from '@angular/common';
+import { ButtonComponent } from '../UI/button/button.component';
+import { AccordionContent } from '../UI/accordion/directives/accordion-content.directive';
 
 @Component({
   selector: 'app-sidebar-filter',
   templateUrl: './sidebar-filter.component.html',
   styleUrls: ['./sidebar-filter.component.css'],
+  standalone: true,
+  imports: [
+    AccordionComponent,
+    ReactiveFormsModule,
+    AccordionItem,
+    CommonModule,
+    ButtonComponent,
+    AccordionContent,
+    AccordionContent,
+    AccordionItem,
+  ],
 })
 export class SidebarFilterComponent {
   @Output()
