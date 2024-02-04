@@ -1,5 +1,5 @@
 <header class="relative">
-  <button class="absolute -right-1 -top-1">
+  <button class="absolute -right-1 -top-1" (click)="this.addToWishlist.emit()">
     <rmx-icon name="heart-3-line"></rmx-icon>
   </button>
   <ng-container *ngIf="product.images">
@@ -8,7 +8,7 @@
 </header>
 <div>
   <p class="text-sm font-medium line-clamp-2" [style.min-height.px]="40">
-    {{ product.title }}
+    {{ product.name }}
   </p>
   <ng-content select="rating"></ng-content>
   <div class="mt-2">
@@ -35,22 +35,10 @@
   </div>
 </div>
 <footer class="flex items-center gap-2 mt-4">
-  <button
-    appButton
-    variant="outline"
-    size="small"
-    class="flex-1"
-    (click)="quickView.emit()"
-
-  >
+  <button appButton variant="outline" size="small" class="flex-1" (click)="quickView.emit()">
     Quick View
   </button>
   <button appButton size="small">
-    <rmx-icon
-      name="shopping-cart-2-fill"
-      class="add-to-cart icon-sm"
-      (click)="this.addToCart.emit(product)"
-
-    ></rmx-icon>
+    <rmx-icon name="shopping-cart-2-fill" class="add-to-cart icon-sm" (click)="this.addToCart.emit(product)"></rmx-icon>
   </button>
 </footer>

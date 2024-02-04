@@ -8,6 +8,7 @@
           [product]="product"
           (quickView)="this.openQuickView(product)"
           (addToCart)="this.addToCart($event)"
+          (addToWishlist)="this.addToWishlist(product)"
         ></app-product-card>
       </li>
     </ul>

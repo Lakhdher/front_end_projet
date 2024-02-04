@@ -29,6 +29,7 @@ import {
   RiHeart3Line,
   RiShoppingCart2Fill,
   RiCloseLine,
+  RiDeleteBin5Line,
 } from 'angular-remix-icon';
 import { AccordionComponent } from './pages/products/UI/accordion/accordion.component';
 import { ButtonComponent } from './pages/products/UI/button/button.component';
@@ -46,6 +47,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { DeliveryComponent } from './pages/checkout/delivery/delivery.component';
 import { PickUpComponent } from './pages/checkout/pick-up/pick-up.component';
+import { WishlistCardComponent } from './pages/wishlist/wishlist-card/wishlist-card.component';
 
 const icons = {
   RiAncientGateFill,
@@ -53,6 +55,7 @@ const icons = {
   RiHeart3Line,
   RiShoppingCart2Fill,
   RiCloseLine,
+  RiDeleteBin5Line,
 };
 
 @NgModule({
@@ -63,7 +66,6 @@ const icons = {
     ProductCardComponent,
     SidebarFilterComponent,
     AccordionComponent,
-    ButtonComponent,
     TogglePipe,
     CheckboxComponent,
     AccordionContent,
@@ -81,6 +83,8 @@ const icons = {
     CheckoutComponent,
     DeliveryComponent,
     PickUpComponent,
+    WishlistCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -98,9 +102,10 @@ const icons = {
     NgOptimizedImage,
     SideSheetComponent,
     BrowserAnimationsModule,
+    ButtonComponent,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  exports: [ProductQuickViewComponent, SideSheetComponent],
+  exports: [ProductQuickViewComponent, SideSheetComponent, ButtonComponent],
 })
 export class AppModule {}
