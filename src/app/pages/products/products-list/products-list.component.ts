@@ -58,7 +58,7 @@ export class ProductsListComponent {
         }
       },
       (err) => {
-        this.toaster.error('API Error, Please try again later.');
+        this.toaster.error('Please login to proceed further!');
       }
     );
   }
