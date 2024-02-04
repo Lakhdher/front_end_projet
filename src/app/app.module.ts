@@ -29,6 +29,7 @@ import {
   RiHeart3Line,
   RiShoppingCart2Fill,
   RiCloseLine,
+  RiDeleteBin5Line,
 } from 'angular-remix-icon';
 import { AccordionComponent } from './pages/products/UI/accordion/accordion.component';
 import { ButtonComponent } from './pages/products/UI/button/button.component';
@@ -51,6 +52,7 @@ const icons = {
   RiHeart3Line,
   RiShoppingCart2Fill,
   RiCloseLine,
+  RiDeleteBin5Line,
 };
 
 @NgModule({

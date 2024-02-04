@@ -8,11 +8,13 @@ import { Product } from '../models/product';
   providedIn: 'root',
 })
 export class ProductsService {
+
   backend_url = environment.backend_url;
   getProductsURL = environment.backend_url + '/products';
   getBrandsURL = environment.backend_url + '/products/brands';
   getCategoriesURL = environment.backend_url + '/products/categories';
   getFilteredProductsURL = environment.backend_url + '/products/search';
+  getWishlistURL = environment.backend_url + '/user/wishlist';
 
   constructor(private http: HttpClient) {}
 
@@ -52,15 +54,33 @@ export class ProductsService {
 
   getSearchedProducts(searchTerm: string) {
     if (searchTerm === '') {
-      return of([
-      ]);
+      return of([]);
     }
-    return this.http.get<Product[]>(`${this.backend_url}/products/advanced-search?query=${searchTerm}&skip=0&limit=10`)
+    return this.http
+      .get<Product[]>(
+        `${this.backend_url}/products/advanced-search?query=${searchTerm}&skip=0&limit=10`
+      )
       .pipe(
         catchError((err) => {
           console.error('Error fetching products:', err);
           return throwError(() => 'Error fetching products');
         })
       );
+  }
+
+  getWishlist() {
+    return this.http
+      .get<any>(this.getWishlistURL)
+      .pipe(map((res: any) => res.data));
+  }
+
+  deleteFromWishlist(arg0: number) {
+    return this.http.delete(`${this.getWishlistURL}/${arg0}`);
+  }
+
+  addToWishlist(arg0: number) {
+    return this.http.post(`${this.getWishlistURL}/${arg0}`, {}).pipe(
+      map((res: any) => res.message),
+    );
   }
 }
