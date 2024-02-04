@@ -14,21 +14,22 @@ import {DeliveryComponent} from "./pages/checkout/delivery/delivery.component";
 import {PickUpComponent} from "./pages/checkout/pick-up/pick-up.component";
 
 const routes: Routes = [
-  {path: 'products', component: ProductsComponent},
-  {path: 'cart', component: CartComponent, canActivate: [authGuard]},
-  {path: 'favorites', component: WishlistComponent, canActivate: [authGuard]},
-  {path: 'home', component: HomeComponent},
+
+  { path: 'products', component: ProductsComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'favorites', component: WishlistComponent, canActivate: [authGuard] },
+  { path: 'home', component: HomeComponent },
   {
     path: 'checkout', component: CheckoutComponent, children: [
       {path: 'delivery', component: DeliveryComponent},
       {path: 'pickup', component: PickUpComponent}
     ]
   },
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'profile', component: ProfileComponent, canActivate: [authGuard]},
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: '**', component: NotFound404Component},
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', component: NotFound404Component },
 ];
 
 @NgModule({

@@ -54,7 +54,7 @@ export class ProductsListComponent {
         if (res === 'Added to Wishlist Successfully!') {
           this.toaster.success('Product added to wishlist');
         } else {
-          this.toaster.error('Product already in wishlist');
+          this.toaster.info('Product already in wishlist');
         }
       },
       (err) => {

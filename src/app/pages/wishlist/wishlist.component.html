@@ -1,7 +1,7 @@
 <div class="p-1 flex flex-wrap items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
   <ng-container *ngFor="let product of products$ |async">
     <app-wishlist-card [product]="product" (deleteFromWishlist)="this.deleteFromWishlist(product)"
-      (openQuickView)="this.openQuickView(product)"></app-wishlist-card>
+      (openQuickView)="this.openQuickView(product)" (addToCart)="this.addToCart(product)"></app-wishlist-card>
   </ng-container>
 </div>
 <ng-template #noProducts>
@@ -14,7 +14,5 @@
     </p>
   </section>
 </ng-template>
-<app-product-quick-view
-  [product]="this.activeProduct$ | async"
-  (addToCart)="this.addToCart($event)"
-></app-product-quick-view>
+<app-product-quick-view [product]="this.activeProduct$ | async" (addToCart)="this.addToCart($event)">
+</app-product-quick-view>
