@@ -5,6 +5,7 @@ import { AccordionTitle } from './accordion-title.directive';
 
 @Directive({
   selector: 'app-accordion-item',
+  standalone: true,
 })
 export class AccordionItem {
   @Input()

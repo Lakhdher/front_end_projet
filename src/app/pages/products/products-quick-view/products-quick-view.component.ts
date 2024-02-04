@@ -38,6 +38,9 @@ export class ProductQuickViewComponent implements OnInit {
   @Output()
   addToCart = new EventEmitter<any>();
 
+  @Output()
+  addToWishlist = new EventEmitter<any>();
+
   @ViewChild(SideSheetComponent)
   private readonly sideSheetRef!: SideSheetComponent;
 

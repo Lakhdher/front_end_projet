@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { Product } from 'src/app/models/product';
 import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
-import {CartService} from "../../services/cart.service";
+import { CartService } from '../../services/cart.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 export interface Tile {
   cols: number;
@@ -28,7 +29,7 @@ export interface Tile {
     MatButtonModule,
     NgStyle,
     AsyncPipe,
-    ProductQuickViewComponent
+    ProductQuickViewComponent,
   ],
 })
 export class HomeComponent {
@@ -40,7 +41,8 @@ export class HomeComponent {
   constructor(
     private productsService: ProductsService,
     private overlay: OverlayService,
-    private cartService: CartService
+    private cartService: CartService,
+    private toaster: ToastrService
   ) {
     this.products$ = this.productsService.getProducts(4, 3.75);
     overlay.clickedOutside$.subscribe(() => {
@@ -55,5 +57,20 @@ export class HomeComponent {
 
   addToCart($event: any) {
     this.cartService.setProduct($event);
+  }
+
+  addToWishlist(product: any) {
+    return this.productsService.addToWishlist(product.id as number).subscribe(
+      (res) => {
+        if (res === 'Added to Wishlist Successfully!') {
+          this.toaster.success('Product added to wishlist');
+        } else {
+          this.toaster.info('Product already in wishlist');
+        }
+      },
+      (err) => {
+        this.toaster.error('Please login to proceed further!');
+      }
+    );
   }
 }

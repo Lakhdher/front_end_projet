@@ -2,11 +2,16 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
+import { SidebarFilterComponent } from './sidebar-filter/sidebar-filter.component';
+import { ProductsListComponent } from './products-list/products-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
+  standalone: true,
+  imports: [SidebarFilterComponent, ProductsListComponent, CommonModule],
 })
 export class ProductsComponent {
   products: Product[] = [];

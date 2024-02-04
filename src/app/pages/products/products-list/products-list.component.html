@@ -9,6 +9,7 @@
           (quickView)="this.openQuickView(product)"
           (addToCart)="this.addToCart($event)"
           (addToWishlist)="this.addToWishlist(product)"
+          (removeFromWishlit)="this.removeFromWishlist(product)"
         ></app-product-card>
       </li>
     </ul>
@@ -32,4 +33,5 @@
 <app-product-quick-view
   [product]="this.activeProduct$ | async"
   (addToCart)="this.addToCart($event)"
+  (addToWishlist)="this.addToWishlist($event)"
 ></app-product-quick-view>

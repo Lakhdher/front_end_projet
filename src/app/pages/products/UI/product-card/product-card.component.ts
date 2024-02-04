@@ -1,9 +1,14 @@
+import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RemixIconModule } from 'angular-remix-icon';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
+  standalone: true,
+  imports: [RemixIconModule, CurrencyPipe, AsyncPipe, CommonModule, ButtonComponent],
 })
 export class ProductCardComponent {
   @Input()
@@ -17,6 +22,9 @@ export class ProductCardComponent {
 
   @Output()
   addToWishlist = new EventEmitter<void>();
+
+  @Output()
+  removeFromWishlit = new EventEmitter<void>();
 
   priceDifference: number = 0;
   discount: number = 0;

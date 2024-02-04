@@ -14,11 +14,18 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { CommonModule } from '@angular/common';
+import { TogglePipe } from './pipe/toggle.pipe';
+import { AccordionContent } from './directives/accordion-content.directive';
+import { AccordionHeader } from './directives/accordion-header.directive';
+import { AccordionTitle } from './directives/accordion-title.directive';
 
 @Component({
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
   styleUrls: ['./accordion.component.css'],
+  standalone: true,
+  imports: [AccordionItem, CommonModule, TogglePipe, AccordionContent, AccordionContent, AccordionHeader, AccordionTitle],
   animations: [
     trigger('contentExpansion', [
       state(

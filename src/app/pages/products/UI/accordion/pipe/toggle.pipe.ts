@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'getToggleFunction',
+  standalone: true,
 })
 export class TogglePipe implements PipeTransform {
   /**
