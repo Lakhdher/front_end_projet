@@ -1,27 +1,32 @@
 <header class="relative">
-  <button class="absolute -right-1 -top-1">
-    <rmx-icon name="heart-3-line"></rmx-icon>
-  </button>
-  <ng-container *ngIf="images">
-    <img [src]="images[0]" [alt]="title" class="aspect-square object-contain" />
+  <div class="absolute -right-1 -top-1">
+    <button *ngIf="product.wishlist" (click)="this.removeFromWishlit.emit()">
+      <rmx-icon name="heart-3-fill"></rmx-icon>
+    </button>
+    <button *ngIf="!product.wishlist" (click)="this.addToWishlist.emit()">
+      <rmx-icon name="heart-3-line"></rmx-icon>
+    </button>
+  </div>
+  <ng-container *ngIf="product.images">
+    <img [src]="product.images[0]" [alt]="product.title" class="aspect-square object-contain" />
   </ng-container>
 </header>
 <div>
   <p class="text-sm font-medium line-clamp-2" [style.min-height.px]="40">
-    {{ title }}
+    {{ product.name }}
   </p>
   <ng-content select="rating"></ng-content>
   <div class="mt-2">
     <p class="text-xs text-gray-500">Price</p>
     <div class="flex text-sm items-center">
-      <p class="font-medium">{{ price | currency }}</p>
-      <ng-container *ngIf="originalPrice">
+      <p class="font-medium">{{ product.price | currency }}</p>
+      <ng-container *ngIf="product.originalPrice">
         <p class="text-gray-500 text-xs line-through ml-2">
-          {{ originalPrice | currency }}
+          {{ product.originalPrice | currency }}
         </p>
       </ng-container>
     </div>
-    <ng-container *ngIf="originalPrice">
+    <ng-container *ngIf="product.originalPrice">
       <div class="text-xs">
         <p>
           Savings
@@ -35,19 +40,10 @@
   </div>
 </div>
 <footer class="flex items-center gap-2 mt-4">
-  <button
-    appButton
-    variant="outline"
-    size="small"
-    class="flex-1"
-    (click)="quickView.emit()"
-  >
+  <button appButton variant="outline" size="small" class="flex-1" (click)="quickView.emit()">
     Quick View
   </button>
   <button appButton size="small">
-    <rmx-icon
-      name="shopping-cart-2-fill"
-      class="add-to-cart icon-sm"
-    ></rmx-icon>
+    <rmx-icon name="shopping-cart-2-fill" class="add-to-cart icon-sm" (click)="this.addToCart.emit(product)"></rmx-icon>
   </button>
 </footer>

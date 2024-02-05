@@ -1,0 +1,28 @@
+<div class="w-72 bg-white shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl">
+  <header class="relative">
+    <button class="absolute -right-1 -top-1 me-5 mt-5" (click)="this.deleteFromWishlist.emit()">
+      <rmx-icon name="delete-bin-5-line"></rmx-icon>
+    </button>
+    <ng-container *ngIf="product.images">
+      <img [src]="product.images[0]" [alt]="product.name" class="p-5 aspect-square object-contain rounded-t-xl" />
+    </ng-container>
+  </header>
+  <button (click)="this.openQuickView.emit()">
+    <div class="px-4 w-72">
+      <span class="text-gray-400 mr-3 uppercase text-xs">{{product.brand}}</span>
+      <p class="text-lg font-bold text-black truncate block capitalize">{{product.name}}</p>
+      <div class="flex items-center">
+        <p class="text-lg font-semibold text-black cursor-auto">{{product.price | currency}}</p>
+        <del>
+          <p class="text-sm text-gray-600 cursor-auto ms-4">{{product.originalPrice | currency}}</p>
+        </del>
+      </div>
+    </div>
+  </button>
+  <footer class="flex mt-0">
+    <button appButton size="small" class="ml-auto me-3 mb-3">
+      <rmx-icon name="shopping-cart-2-fill" class="add-to-cart icon-sm" (click)="this.addToCart.emit()">
+      </rmx-icon>
+    </button>
+  </footer>
+</div>

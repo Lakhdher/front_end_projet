@@ -1,55 +1,45 @@
+import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RemixIconModule } from 'angular-remix-icon';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
+  standalone: true,
+  imports: [RemixIconModule, CurrencyPipe, AsyncPipe, CommonModule, ButtonComponent],
 })
 export class ProductCardComponent {
   @Input()
-  images?: string[];
-
-  @Input()
-  title!: string;
-
-  @Input()
-  price!: number;
-
-  @Input()
-  wishlisted?: boolean;
-
-  @Input()
-  originalPrice?: number;
-
-  @Input()
-  subtitle?: string;
-
-  @Input()
-  link?: string;
+  product!: any;
 
   @Output()
   quickView = new EventEmitter<void>();
 
   @Output()
-  addToCart = new EventEmitter<void>();
+  addToCart = new EventEmitter<any>();
 
   @Output()
   addToWishlist = new EventEmitter<void>();
+
+  @Output()
+  removeFromWishlit = new EventEmitter<void>();
 
   priceDifference: number = 0;
   discount: number = 0;
   constructor() {}
 
   ngOnInit(): void {
-    if (this.originalPrice && this.price) {
-      this.priceDifference = this.originalPrice - this.price;
+    if (this.product.originalPrice && this.product.price) {
+      this.priceDifference = this.product.originalPrice - this.product.price;
       this.discount = this.getDiscountPercentage();
     }
   }
 
   getDiscountPercentage(): number {
-    if (this.originalPrice && this.price) {
-      return Math.round((this.priceDifference / this.originalPrice) * 100);
+    if (this.product.originalPrice && this.product.price) {
+      return Math.round((this.priceDifference / this.product.originalPrice) * 100);
     }
     return -1;
   }

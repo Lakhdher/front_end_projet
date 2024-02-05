@@ -1,7 +1,18 @@
-import { Component } from '@angular/core';
-import {MatDividerModule} from '@angular/material/divider';
-import {NgFor, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
-
+import { Component, OnInit } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
+import {
+  CurrencyPipe,
+  KeyValuePipe,
+  NgFor,
+  NgForOf,
+  NgIf,
+  NgOptimizedImage,
+} from '@angular/common';
+import { CartService } from '../../services/cart.service';
+import { ChangeDetectorRef } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { ProductsService } from 'src/app/services/products.service';
+import { Router, RouterModule } from '@angular/router';
 
 interface Product {
   id: number;
@@ -17,63 +28,79 @@ interface Product {
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
   standalone: true,
-  imports: [MatDividerModule, NgIf, NgFor, NgOptimizedImage]
+  imports: [
+    MatDividerModule,
+    NgIf,
+    NgFor,
+    NgOptimizedImage,
+    KeyValuePipe,
+    CurrencyPipe,
+    RouterModule,
+  ],
 })
-export class CartComponent {
-  products: Product[] = [
-    {
-      name: 'Product 1',
-      price: 100,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
-      quantity: 1,
-      id: 1,
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      name: 'Product 2',
-      price: 150,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
-      quantity: 1,
-      id: 2,
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      name: 'Product 3',
-      price: 200,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
-      quantity: 4,
-      id: 3,
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      name: 'Product 4',
-      price: 250,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
-      quantity: 5,
-      id: 4,
-      image: 'https://via.placeholder.com/150'
-    },
-    {
-      name: 'Product 5',
-      price: 300,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!',
-      quantity: 10,
-      id: 5,
-      image: 'https://via.placeholder.com/150'
-    },
+export class CartComponent implements OnInit {
+  products: any;
+  p$ = this.cartService.products$;
 
-  ];
-  setQuantity(e:any, product: Product) {
+  constructor(
+    private cartService: CartService,
+    private cd: ChangeDetectorRef,
+    private productService: ProductsService,
+    private toaster: ToastrService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.cartService.products$.subscribe((products) => {
+      this.products = products;
+    });
+    console.log(this.products[0]);
+  }
+
+  setQuantity(e: any, product: Product) {
     product.quantity = e.target.value;
   }
+
   clearCart() {
     this.products = [];
-  }
-  checkout() {
-    console.log("Checkout");
-  }
-  removeProduct(product: Product) {
-    this.products = this.products.filter(p => p.id !== product.id);
+    localStorage.removeItem('cart');
   }
 
+  checkout() {
+    this.router.navigate(['/checkout']);
+  }
+
+  removeProduct(product: Product) {
+    this.cartService.removeProduct(product);
+  }
+
+  addToWishlist(product: Product) {
+    return this.productService.addToWishlist(product.id as number).subscribe(
+      (res) => {
+        console.log(res);
+        if (res === 'Added to Wishlist Successfully!') {
+          this.toaster.success('Product added to wishlist');
+        } else {
+          this.toaster.error('Product already in wishlist');
+        }
+      },
+      (err) => {
+        this.toaster.error('Please login to proceed further!');
+      }
+    );
+  }
+
+  getSubtotal(): number {
+    return this.products.reduce(
+      (acc: number, product: Product) => acc + product.price * product.quantity,
+      0
+    );
+  }
+
+  getTotal(): number {
+    if (this.products.length === 0) {
+      return 0;
+    }
+    return this.getSubtotal() + 10;
+  }
 }

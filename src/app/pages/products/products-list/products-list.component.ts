@@ -12,43 +12,74 @@ import { promises } from '../mock_data/promises';
 import { SPECIFICATION_KEYS } from '../mock_data/specifications';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
+import { CartService } from '../../../services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { ProductCardComponent } from '../UI/product-card/product-card.component';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
+  standalone: true,
+  imports: [ProductQuickViewComponent, ProductCardComponent, AsyncPipe, CommonModule],
 })
-export class ProductsListComponent  {
-  promises = promises;
-  addToCart($event: any) {
-    throw new Error('Method not implemented.');
-  }
+export class ProductsListComponent {
   @ViewChild(ProductQuickViewComponent, { static: true })
   productQuickViewRef?: ProductQuickViewComponent;
-  private readonly activeProductSubject = new Subject<any>();
-  readonly activeProduct$: Observable<any> = this.activeProductSubject
-    .asObservable()
-    .pipe(
-      filter((product) => !!product),
-      map((product) => {
-        return {
-          ...product,
-          promises: this.promises,
-        };
-      })
-    );
 
   @Input()
   products: Product[] = [];
 
-  constructor(private readonly overlay: OverlayService) {
+  activeProduct$: Observable<any> = this.overlay.activeProduct$;
+
+  constructor(
+    private readonly overlay: OverlayService,
+    private cartService: CartService,
+    private productService: ProductsService,
+    private toaster: ToastrService
+  ) {
     overlay.clickedOutside$.subscribe(() => {
       this.productQuickViewRef?.close();
     });
   }
-
-  openQuickView(product: any) {
+  addToCart(product: Product) {
+    this.cartService.setProduct(product);
+  }
+  openQuickView(product: Product) {
     this.productQuickViewRef?.open();
-    this.activeProductSubject.next(product);
+    this.overlay.activeProductSubject.next(product);
+  }
+
+  addToWishlist(product: any) {
+    if (!localStorage.getItem('id_token')) {
+      this.toaster.error('Please login to proceed further!');
+      return;
+    }
+    product.wishlist = true;
+    return this.productService.addToWishlist(product.id as number).subscribe(
+      (res) => {
+        if (res === 'Added to Wishlist Successfully!') {
+          this.toaster.success('Product added to wishlist');
+        } else {
+          this.toaster.info('Product already in wishlist');
+        }
+      },
+      (err) => {
+        this.toaster.error('Please login to proceed further!');
+      }
+    );
+  }
+
+  removeFromWishlist(p: any) {
+    p.wishlist = false;
+    this.productService.deleteFromWishlist(p.id as number).subscribe(
+      (res) => {
+        this.toaster.success('Product removed from wishlist');
+      },
+      (err) => {
+        this.toaster.error('Please login to proceed further!');
+      }
+    );
   }
 }

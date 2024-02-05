@@ -1,15 +1,15 @@
 <ng-container *ngIf="products">
-  <ng-container *ngIf="products.length!=0; else noProducts">
+  <ng-container *ngIf="products.length != 0; else noProducts">
     <ul
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
     >
       <li *ngFor="let product of products">
         <app-product-card
-          [title]="product.name"
-          [price]="product.price"
-          [originalPrice]="product.originalPrice"
-          [images]="product.images"
+          [product]="product"
           (quickView)="this.openQuickView(product)"
+          (addToCart)="this.addToCart($event)"
+          (addToWishlist)="this.addToWishlist(product)"
+          (removeFromWishlit)="this.removeFromWishlist(product)"
         ></app-product-card>
       </li>
     </ul>
@@ -33,4 +33,5 @@
 <app-product-quick-view
   [product]="this.activeProduct$ | async"
   (addToCart)="this.addToCart($event)"
+  (addToWishlist)="this.addToWishlist($event)"
 ></app-product-quick-view>
