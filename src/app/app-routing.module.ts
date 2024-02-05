@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './pages/cart/cart.component';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
-import { ProductsComponent } from './pages/products/products.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFound404Component } from './pages/not-found404/not-found404.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -14,7 +13,13 @@ import { DeliveryComponent } from './pages/checkout/delivery/delivery.component'
 import { PickUpComponent } from './pages/checkout/pick-up/pick-up.component';
 
 const routes: Routes = [
-  { path: 'products', component: ProductsComponent },
+  {
+    path: 'products',
+    loadComponent: () =>
+      import('./pages/products/products.component').then(
+        (m) => m.ProductsComponent
+      ),
+  },
   { path: 'cart', component: CartComponent },
   { path: 'favorites', component: WishlistComponent },
   { path: 'home', component: HomeComponent },
