@@ -42,6 +42,7 @@ import { AccordionTitle } from './directives/accordion-title.directive';
       ),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccordionComponent implements AfterContentInit {
   expanded = new Set<number>();
