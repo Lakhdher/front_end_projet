@@ -9,6 +9,7 @@ import {Product} from 'src/app/models/product';
 import {ProductQuickViewComponent} from '../products/products-quick-view/products-quick-view.component';
 import {CartService} from '../../services/cart.service';
 import {ToastrService} from 'ngx-toastr';
+import { RouterModule, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,8 @@ import {ToastrService} from 'ngx-toastr';
     NgStyle,
     AsyncPipe,
     ProductQuickViewComponent,
+    RouterLink,
+    RouterModule,
   ],
 })
 export class HomeComponent {
