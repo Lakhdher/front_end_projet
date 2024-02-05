@@ -1,9 +1,8 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
-import { PRODUCTS } from './pages/products/mock_data/products';
-import { animate, style, transition, trigger } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
-import { OverlayService } from './services/overlay.service';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import {Component, Inject, OnDestroy} from '@angular/core';
+import {animate, style, transition, trigger} from '@angular/animations';
+import {DOCUMENT} from '@angular/common';
+import {OverlayService} from './services/overlay.service';
+import {Observable, Subject, takeUntil} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +11,11 @@ import { Observable, Subject, takeUntil } from 'rxjs';
   animations: [
     trigger('fadeSlideInOut', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(10px)' }),
-        animate('200ms', style({ opacity: 1, transform: 'translateY(0)' })),
+        style({opacity: 0, transform: 'translateY(10px)'}),
+        animate('200ms', style({opacity: 1, transform: 'translateY(0)'})),
       ]),
       transition(':leave', [
-        animate('200ms', style({ opacity: 0, transform: 'translateY(10px)' })),
+        animate('200ms', style({opacity: 0, transform: 'translateY(10px)'})),
       ]),
     ]),
   ],

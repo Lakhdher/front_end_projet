@@ -1,10 +1,10 @@
-import { Component, OnInit, signal } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { map, Observable } from 'rxjs';
-import { CartService } from 'src/app/services/cart.service';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { AutoCompleteComponent } from '../auto-complete/auto-complete.component';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
+import {Observable} from 'rxjs';
+import {CartService} from 'src/app/services/cart.service';
+import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
+import {AutoCompleteComponent} from '../auto-complete/auto-complete.component';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +20,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     protected authService: AuthService,
     protected cartService: CartService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.status$ = this.authService.isLoggedIn$;

@@ -1,5 +1,5 @@
-import { Component, HostBinding, Input, NgModule } from '@angular/core';
-import { OverlayService } from '../../../../services/overlay.service';
+import {Component, HostBinding, Input} from '@angular/core';
+import {OverlayService} from '../../../../services/overlay.service';
 import {AngularRemixIconComponent} from "angular-remix-icon";
 import {NgForOf, NgIf} from "@angular/common";
 
@@ -19,7 +19,8 @@ export class SideSheetComponent {
   @HostBinding('class.open')
   isOpen = false;
 
-  constructor(private overlayService: OverlayService) {}
+  constructor(private overlayService: OverlayService) {
+  }
 
   toggle() {
     this.isOpen = !this.isOpen;

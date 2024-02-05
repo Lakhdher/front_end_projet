@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NotFound404Component } from './not-found404.component';
+import {NotFound404Component} from './not-found404.component';
 
 describe('NotFound404Component', () => {
   let component: NotFound404Component;

@@ -4,12 +4,12 @@
     <p class="text-gray-500">
       Searching for <strong>{{ searchQuery }}</strong>
       <span class="ml-2"
-        ><button
-          (click)="this.clearSearch()"
-          wfh
-          size="xsmall"
-          variant="neutral"
-        >
+      ><button
+        (click)="this.clearSearch()"
+        size="xsmall"
+        variant="neutral"
+        wfh
+      >
           Clear Search
         </button></span
       >
@@ -30,6 +30,6 @@
     ></app-sidebar-filter>
   </aside>
   <section class="content px-6 pb-10">
-    <app-products-list [products]="this.products" ></app-products-list>
+    <app-products-list [products]="this.products"></app-products-list>
   </section>
 </section>

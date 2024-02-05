@@ -1,20 +1,20 @@
 <div class="absolute h-full left-8 top-0 grid place-items-center">
-  <img src="../../../assets/images/search.png" class="w-5 h-5" alt="search icon" height="512" width="512">
+  <img alt="search icon" class="w-5 h-5" height="512" src="../../../assets/images/search.png" width="512">
 </div>
-<input type="text" #productSearchInput id="searchInput" placeholder="Search for products"
-       (click)="toggleResults()"
-       class="w-full bg-gray-100 pl-8 shadow appearance-none border-gray-200 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+<input #productSearchInput (click)="toggleResults()" class="w-full bg-gray-100 pl-8 shadow appearance-none border-gray-200 rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="searchInput"
+       placeholder="Search for products"
+       type="text">
 
-<div class="bg-gray-100 shadow-md pl-8 absolute text-gray-700 z-10 "
+<div *ngIf=" searchResults?.length && showResults "
      [style.width]="productSearchInput.offsetWidth + 'px'"
-     *ngIf=" searchResults?.length && showResults ">
+     class="bg-gray-100 shadow-md pl-8 absolute text-gray-700 z-10 ">
   <ul class="py-1">
-    <li *ngFor="let product of searchResults" (click)="selectProduct(product)"
+    <li (click)="selectProduct(product)" *ngFor="let product of searchResults"
         class="px-4 py-2 text-gray-700 focus:bg-gray-700 hover:bg-gray-200 cursor-pointer flex items-center">
 
       <div class="mr-4">
         <img *ngIf="product.images && product.images.length > 0"
-          src="{{ product.images[0]}}" alt="{{ product.name }}" class="w-16 h-14 object-cover">
+             alt="{{ product.name }}" class="w-16 h-14 object-cover" src="{{ product.images[0]}}">
       </div>
 
       <div class="flex-1">
@@ -38,6 +38,6 @@
   </ul>
 </div>
 <app-product-quick-view
-  [product]="this.activeProduct$ | async"
   (addToCart)="this.addToCart($event)"
+  [product]="this.activeProduct$ | async"
 ></app-product-quick-view>

@@ -5,14 +5,14 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
           Email
         </label>
-        <input name="email" formControlName="email"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               id="email" type="text"
-
-               [ngClass]="{
+        <input [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  forme.get('email')?.errors && forme.get('email')?.touched
-               }"
-               placeholder="name@example.com">
+               }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               formControlName="email"
+               id="email" name="email"
+
+               placeholder="name@example.com"
+               type="text">
         <p
           *ngIf="
           forme.get('email')?.errors && (forme.get('email')?.dirty || forme.get('email')?.touched)
@@ -28,14 +28,14 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Username
         </label>
-        <input name="username" formControlName="username"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               id="username" type="text"
-
-               [ngClass]="{
+        <input [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  forme.get('email')?.errors && forme.get('email')?.touched
-               }"
-               placeholder="John Dao">
+               }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               formControlName="username"
+               id="username" name="username"
+
+               placeholder="John Dao"
+               type="text">
         <p
           *ngIf="
           forme.get('username')?.errors &&  forme.get('username')?.touched
@@ -52,14 +52,14 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input name="password" formControlName="password"
-               type="password"
-               id="password"
-               [ngClass]="{
+        <input [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  forme.get('password')?.errors && forme.get('password')?.touched
-               }"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
-               placeholder="******************">
+               }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+               formControlName="password"
+               id="password"
+               name="password"
+               placeholder="******************"
+               type="password">
         <p
           *ngIf="forme.get('password')?.errors && (forme.get('password')?.dirty || forme.get('password')?.touched)"
           class="mb-3 text-sm text-red-600 dark:text-red-500"
@@ -71,15 +71,15 @@
     </fieldset>
     <div class="flex items-center justify-between">
       <button
-        class="bg-slate-700 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         (click)="register()"
         [disabled]="forme.invalid"
+        class="bg-slate-700 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit">
         Sign UP
       </button>
       <p class="text-sm mt- font-light text-gray-700 dark:text-gray-700">
-        Already have an account yet? <a routerLink="/login"
-                                      class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign
+        Already have an account yet? <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                        routerLink="/login">Sign
         In</a>
       </p>
     </div>

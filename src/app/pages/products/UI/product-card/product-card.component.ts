@@ -29,7 +29,9 @@ export class ProductCardComponent {
 
   priceDifference: number = 0;
   discount: number = 0;
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     if (this.product.originalPrice && this.product.price) {

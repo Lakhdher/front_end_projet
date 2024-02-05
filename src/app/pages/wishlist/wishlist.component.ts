@@ -1,12 +1,12 @@
-import { Component, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/product';
-import { ProductsService } from 'src/app/services/products.service';
-import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
-import { OverlayService } from 'src/app/services/overlay.service';
-import { CartService } from 'src/app/services/cart.service';
-import { WishlistCardComponent } from './wishlist-card/wishlist-card.component';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import {Component, ViewChild} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Product} from 'src/app/models/product';
+import {ProductsService} from 'src/app/services/products.service';
+import {ProductQuickViewComponent} from '../products/products-quick-view/products-quick-view.component';
+import {OverlayService} from 'src/app/services/overlay.service';
+import {CartService} from 'src/app/services/cart.service';
+import {WishlistCardComponent} from './wishlist-card/wishlist-card.component';
+import {AsyncPipe, CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-wishlist',
@@ -18,7 +18,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 export class WishlistComponent {
   products: any[] = [];
   products$: Observable<Product[]>;
-  @ViewChild(ProductQuickViewComponent, { static: true })
+  @ViewChild(ProductQuickViewComponent, {static: true})
   productQuickViewRef?: ProductQuickViewComponent;
   activeProduct$: Observable<any> = this.overlay.activeProduct$;
 

@@ -4,6 +4,7 @@ import { PickUpComponent } from './pick-up/pick-up.component';
 import { CommonModule } from '@angular/common';
 import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',

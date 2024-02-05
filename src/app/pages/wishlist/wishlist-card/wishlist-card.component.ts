@@ -1,8 +1,8 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RemixIconModule } from 'angular-remix-icon';
-import { Product } from 'src/app/models/product';
-import { ButtonComponent } from '../../products/UI/button/button.component';
+import {CommonModule} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {RemixIconModule} from 'angular-remix-icon';
+import {Product} from 'src/app/models/product';
+import {ButtonComponent} from '../../products/UI/button/button.component';
 
 @Component({
   selector: 'app-wishlist-card',

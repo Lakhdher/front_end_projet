@@ -1,7 +1,7 @@
 <header class="z-10 h-16 flex justify-between items-center w-full fixed top-0 shadow-sm bg-slate-100">
   <div class="flex items-center gap-2">
-    <img routerLink="home" src="../../../assets/images/logo2.png" alt="our app"
-      class="h-24 w-24 aspect-square cursor-pointer" routerLinkActive="text-primary">
+    <img alt="our app" class="h-24 w-24 aspect-square cursor-pointer" routerLink="home"
+         routerLinkActive="text-primary" src="../../../assets/images/logo2.png">
     <nav class="ml-4">
       <ul class="flex items-center gap-8">
         <li>
@@ -28,7 +28,7 @@
               </path>
             </svg>
             <div class="absolute -top-2 -right-3.5 bg-sky-950 text-white text-xs rounded-full px-1">
-              {{this.productCount$ | async}}
+              {{ this.productCount$ | async }}
             </div>
           </div>
 
@@ -39,22 +39,24 @@
   </div>
 
   <div class="flex-1 px-6 relative">
-    <app-auto-complete />
+    <app-auto-complete/>
   </div>
   <div *ngIf="(status$| async)" class="w-10 h-10 mr-4" routerLink="/profile">
-    <a class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
-      routerLinkActive="text-primary"><img src="assets/images/profile-user.png" alt="profile"
-        class="bg-primary text-white rounded-md" />
+    <a
+      class="text-gray-500 text-base  hover:text-primary cursor-pointer transition-colors duration-200 ng-star-inserted"
+      routerLinkActive="text-primary"><img alt="profile" class="bg-primary text-white rounded-md"
+                                           src="assets/images/profile-user.png"/>
     </a>
   </div>
-  <div routerLink="login" *ngIf="!(status$ | async)"
-    class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2">
+  <div *ngIf="!(status$ | async)" class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2"
+       routerLink="login">
     <button class="bg-primary text-white rounded-md">Login</button>
 
   </div>
   <div routerLink="register" (click)="logout()" *ngIf="(status$| async)"
     class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2">
     <button class="bg-primary text-white rounded-md" >Logout</button>
+
   </div>
 
 
