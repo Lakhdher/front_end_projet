@@ -7,29 +7,29 @@
       <h3 class="p-4">
         All stores near you:
       </h3>
-      <ul class="justify-center " *ngFor="let store of stores">
+      <ul *ngFor="let store of stores" class="justify-center ">
         <li class="mt-4">
           <div>
             <li (click)="onStoreSelected(store.name)" [ngStyle]="
             {'border-color': selectedStore === store.name ? '#2563EB' : 'gray'}"
-            class="border-2 border-blue-500 rounded-lg p-3">
+                class="border-2 border-blue-500 rounded-lg p-3">
               <div class="flex items-center space-x-4 rtl:space-x-reverse">
                 <div class="flex-1 ml-2 ">
                   <p class="text-primary font-medium ">
-                    {{store.name}}
+                    {{ store.name }}
                   </p>
                   <p class="text-xs text-gray-400">
-                    {{store.distance}}
+                    {{ store.distance }}
                   </p>
                 </div>
                 <div class="inline-flex items-center text-base text-green-500">
-                  {{store.availability}}
+                  {{ store.availability }}
                 </div>
               </div>
             </li>
             <div *ngIf="selectedStore === store.name">
               <div class="flex flex-row-reverse mt-1">   <!--todo:  if selected     -->
-                <div class="inline-flex items-center text-xs text-gray-600">{{store.checkInRequired}}</div>
+                <div class="inline-flex items-center text-xs text-gray-600">{{ store.checkInRequired }}</div>
               </div>
               <hr class="w-2/3 mx-auto mt-2 ">
               <h3>
@@ -37,10 +37,10 @@
               </h3>
               <div class="mb-4 flex flex-row gap-4">
                 <div
-                  *ngFor="let day of getDates(3)"
-                  class="flex-shrink-0 w-10 h-10 rounded-full border flex items-center justify-center"
-                  [ngClass]="{'bg-blue-500 text-white': day.getDate() === selectedDate.getDate()}"
                   (click)="selectedDate = day"
+                  *ngFor="let day of getDates(3)"
+                  [ngClass]="{'bg-blue-500 text-white': day.getDate() === selectedDate.getDate()}"
+                  class="flex-shrink-0 w-10 h-10 rounded-full border flex items-center justify-center"
                 >
                   <span>{{ day.getDate() }}</span>
                 </div>
@@ -58,22 +58,22 @@
                 </p>
                 <div>
 
-                  <button data-dropdown-toggle="dropdownDelay" data-dropdown-delay="200"
+                  <button (click)="showDropDown = !showDropDown" class="bg-gray-100 text-black  focus:ring-1 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
+                          data-dropdown-delay="200"
+                          data-dropdown-toggle="dropdownDelay"
                           data-dropdown-trigger="hover"
-                          class="bg-gray-100 text-black  focus:ring-1 focus:outline-none focus:ring-black font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center "
-                          (click)="showDropDown = !showDropDown"
                           type="button">check-in window
-                    <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                         viewBox="0 0 10 6">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m1 1 4 4 4-4"/>
+                    <svg aria-hidden="true" class="w-2.5 h-2.5 ms-3" fill="none" viewBox="0 0 10 6"
+                         xmlns="http://www.w3.org/2000/svg">
+                      <path d="m1 1 4 4 4-4" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2"/>
                     </svg>
                   </button>
 
                   <div
                     [ngClass]="{'hidden': !showDropDown}"
                     class="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-2xl w-44 ">
-                    <ul class="py-2 text-sm text-gray-700 " aria-labelledby="dropdownDelayButton">
+                    <ul aria-labelledby="dropdownDelayButton" class="py-2 text-sm text-gray-700 ">
                       <li (click)="onWindowSelected('Window 1')">
                         <p class="block px-4 py-2 text-gray-600 hover:bg-gray-50 cursor-pointer ">Window 1</p>
                       </li>
@@ -124,8 +124,8 @@
         Please note that we are currently experiencing high demand for pick up orders and wait times may be longer than
       </p>
     </div>
-    <button class="bg-slate-800 mx-auto text-white rounded-lg px-4 py-2 mt-4"
-            (click)="onPickUpRequest()"
+    <button (click)="onPickUpRequest()"
+            class="bg-slate-800 mx-auto text-white rounded-lg px-4 py-2 mt-4"
     >
       Send pick up request
     </button>

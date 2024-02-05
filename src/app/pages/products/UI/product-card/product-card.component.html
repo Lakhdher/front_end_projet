@@ -1,18 +1,18 @@
 <header class="relative">
   <div class="absolute -right-1 -top-1">
-    <button *ngIf="product.wishlist" (click)="this.removeFromWishlit.emit()">
+    <button (click)="this.removeFromWishlit.emit()" *ngIf="product.wishlist">
       <rmx-icon name="heart-3-fill"></rmx-icon>
     </button>
-    <button *ngIf="!product.wishlist" (click)="this.addToWishlist.emit()">
+    <button (click)="this.addToWishlist.emit()" *ngIf="!product.wishlist">
       <rmx-icon name="heart-3-line"></rmx-icon>
     </button>
   </div>
   <ng-container *ngIf="product.images">
-    <img [src]="product.images[0]" [alt]="product.title" class="aspect-square object-contain" />
+    <img [alt]="product.title" [src]="product.images[0]" class="aspect-square object-contain"/>
   </ng-container>
 </header>
 <div>
-  <p class="text-sm font-medium line-clamp-2" [style.min-height.px]="40">
+  <p [style.min-height.px]="40" class="text-sm font-medium line-clamp-2">
     {{ product.name }}
   </p>
   <ng-content select="rating"></ng-content>
@@ -31,8 +31,8 @@
         <p>
           Savings
           <strong class="text-green-600">{{
-            priceDifference | currency : "USD" : true
-          }}</strong>
+              priceDifference | currency : "USD" : true
+            }}</strong>
           ({{ discount }}<span class="text-xs">%</span>)
         </p>
       </div>
@@ -40,10 +40,10 @@
   </div>
 </div>
 <footer class="flex items-center gap-2 mt-4">
-  <button appButton variant="outline" size="small" class="flex-1" (click)="quickView.emit()">
+  <button (click)="quickView.emit()" appButton class="flex-1" size="small" variant="outline">
     Quick View
   </button>
   <button appButton size="small">
-    <rmx-icon name="shopping-cart-2-fill" class="add-to-cart icon-sm" (click)="this.addToCart.emit(product)"></rmx-icon>
+    <rmx-icon (click)="this.addToCart.emit(product)" class="add-to-cart icon-sm" name="shopping-cart-2-fill"></rmx-icon>
   </button>
 </footer>

@@ -1,21 +1,13 @@
-import {
-  AfterContentInit,
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { ProductQuickViewComponent } from '../products-quick-view/products-quick-view.component';
-import { OverlayService } from '../../../services/overlay.service';
-import { Observable, Subject, filter, map } from 'rxjs';
-import { promises } from '../mock_data/promises';
-import { SPECIFICATION_KEYS } from '../mock_data/specifications';
-import { ProductsService } from 'src/app/services/products.service';
-import { Product } from 'src/app/models/product';
-import { CartService } from '../../../services/cart.service';
-import { ToastrService } from 'ngx-toastr';
-import { ProductCardComponent } from '../UI/product-card/product-card.component';
-import { AsyncPipe, CommonModule } from '@angular/common';
+import {Component, Input, ViewChild,} from '@angular/core';
+import {ProductQuickViewComponent} from '../products-quick-view/products-quick-view.component';
+import {OverlayService} from '../../../services/overlay.service';
+import {Observable} from 'rxjs';
+import {ProductsService} from 'src/app/services/products.service';
+import {Product} from 'src/app/models/product';
+import {CartService} from '../../../services/cart.service';
+import {ToastrService} from 'ngx-toastr';
+import {ProductCardComponent} from '../UI/product-card/product-card.component';
+import {AsyncPipe, CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-products-list',
@@ -25,7 +17,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   imports: [ProductQuickViewComponent, ProductCardComponent, AsyncPipe, CommonModule],
 })
 export class ProductsListComponent {
-  @ViewChild(ProductQuickViewComponent, { static: true })
+  @ViewChild(ProductQuickViewComponent, {static: true})
   productQuickViewRef?: ProductQuickViewComponent;
 
   @Input()
@@ -43,9 +35,11 @@ export class ProductsListComponent {
       this.productQuickViewRef?.close();
     });
   }
+
   addToCart(product: Product) {
     this.cartService.setProduct(product);
   }
+
   openQuickView(product: Product) {
     this.productQuickViewRef?.open();
     this.overlay.activeProductSubject.next(product);

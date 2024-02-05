@@ -2,7 +2,7 @@
   <div class="ml-14">
     <div class="flex justify-between">
       <h1 class="text-lg font-bold  text-gray-500">Checkout</h1>
-      <a routerLink="/cart" class="px-4 py-2  hover:underline text-blue-500 rounded-md">Show Order Summary:
+      <a class="px-4 py-2  hover:underline text-blue-500 rounded-md" routerLink="/cart">Show Order Summary:
         $2.720.970</a>
     </div>
   </div>
@@ -14,11 +14,11 @@
     <div class="mt-12">
       <div class="grid grid-cols-2 ">
         <div
-          routerLink="delivery" routerLinkActive="active"
-          class="flex items-center justify-center border hover:border-[#30506c] rounded-l-lg p-4">
+          class="flex items-center justify-center border hover:border-[#30506c] rounded-l-lg p-4" routerLink="delivery"
+          routerLinkActive="active">
           <div class="flex flex-col items-center">
             <div class="flex flex-row items-center">
-              <img src="assets/images/delieverd_icon.png" alt="delivery" class="w-14 h-14">
+              <img alt="delivery" class="w-14 h-14" src="assets/images/delieverd_icon.png">
               <p class="m-4 text-base text-center">
                 I'd like to get my order delivered to me.
               </p>
@@ -27,14 +27,14 @@
           </div>
         </div>
         <div
-          routerLink="pickup" routerLinkActive="active"
-          class="flex items-center justify-center border hover:border-[#30506c] rounded-r-lg p-4">
+          class="flex items-center justify-center border hover:border-[#30506c] rounded-r-lg p-4" routerLink="pickup"
+          routerLinkActive="active">
           <div class="flex flex-col items-center">
             <div class="flex flex-row items-center">
               <p class="m-4 text-base text-center">
                 I'd like to pick up my order from the store.
               </p>
-              <img src="assets/images/pick.png" alt="pickup" class="w-14 h-14">
+              <img alt="pickup" class="w-14 h-14" src="assets/images/pick.png">
             </div>
             <p class="text-lg font-medium text-gray-700 mt-2">Pickup</p>
           </div>

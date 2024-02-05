@@ -1,16 +1,16 @@
 <section>
   <app-accordion [formGroup]="filtersForm">
-    <app-accordion-item title="Price Range" [isOpen]="true">
+    <app-accordion-item [isOpen]="true" title="Price Range">
       <ng-template appAccordionContent>
         <div class="p-2 grid grid-cols-2 gap-4" formGroupName="priceRange">
           <div class="form-group">
             <label style="font-size: small">From</label>
             <div class="flex justify-start items-stretch">
               <input
-                type="text"
                 class="flex-1 w-full"
                 formControlName="from"
                 style="border-radius: 0.5rem"
+                type="text"
               />
             </div>
           </div>
@@ -18,17 +18,17 @@
             <label style="font-size: small">To</label>
             <div class="flex justify-start items-stretch">
               <input
-                type="text"
                 class="flex-1 w-full"
                 formControlName="to"
                 style="border-radius: 0.5rem"
+                type="text"
               />
             </div>
           </div>
         </div>
       </ng-template>
     </app-accordion-item>
-    <app-accordion-item title="Brands" [isOpen]="true">
+    <app-accordion-item [isOpen]="true" title="Brands">
       <ng-template appAccordionContent>
         <div class="p-4 flex flex-col gap-2">
           <ng-container
@@ -36,14 +36,14 @@
             formArrayName="brands"
           >
             <div class="flex gap-2 m-1">
-              <input type="checkbox" [value]="brand" [formControlName]="i" />
+              <input [formControlName]="i" [value]="brand" type="checkbox"/>
               <span> {{ brand }} </span>
             </div>
           </ng-container>
         </div>
       </ng-template>
     </app-accordion-item>
-    <app-accordion-item title="Categories" [isOpen]="true">
+    <app-accordion-item [isOpen]="true" title="Categories">
       <ng-template appAccordionContent>
         <div class="p-4 flex flex-col gap-2">
           <ng-container
@@ -51,27 +51,27 @@
             formArrayName="categories"
           >
             <div class="flex gap-2 m-1">
-              <input type="checkbox" [value]="category" [formControlName]="i" />
+              <input [formControlName]="i" [value]="category" type="checkbox"/>
               <span> {{ category }} </span>
             </div>
           </ng-container>
         </div>
       </ng-template>
     </app-accordion-item>
-    <app-accordion-item title="Colors" [isOpen]="true">
+    <app-accordion-item [isOpen]="true" title="Colors">
       <ng-template appAccordionContent>
         <div class="p-4 filter__colors">
           <ul class="flex gap-4 flex-wrap">
             <ng-container *ngFor="let item of COLORS; let i = index">
               <li>
                 <button
-                  class="bg-gray-100 rounded-md border border-gray-100 flex gap-2 text-xs pt-2 px-2"
                   (click)="selectColor(item.value)"
                   [class.active]="getState(item.value)"
+                  class="bg-gray-100 rounded-md border border-gray-100 flex gap-2 text-xs pt-2 px-2"
                 >
                   <div
-                    class="w-4 h-4 rounded-md color-indicator"
                     [style.background-color]="item?.color"
+                    class="w-4 h-4 rounded-md color-indicator"
                   ></div>
                   <p>{{ item.label }}</p>
                 </button>
@@ -86,10 +86,10 @@
 <footer
   class="mt-4 flex gap-2 shadow-lg rounded-md sticky bottom-2 p-4 bg-white border border-gray-200"
 >
-  <button appButton size="small" class="flex-1" (click)="triggerChange()">
+  <button (click)="triggerChange()" appButton class="flex-1" size="small">
     Apply Filters
   </button>
-  <button appButton variant="neutral" size="small" (click)="resetFilters()">
+  <button (click)="resetFilters()" appButton size="small" variant="neutral">
     Reset
   </button>
 </footer>

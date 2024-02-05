@@ -1,0 +1,25 @@
+<h2 mat-dialog-title class="text-center">Hi {{data.username}}</h2>
+<mat-dialog-content class=" w-full ">
+  <div class="w-full flex justify-center items-center">
+    <mat-form-field class="w-full">
+      <mat-label>Email</mat-label>
+      <input matInput [defaultValue]="email" [(ngModel)]="email">
+    </mat-form-field>
+  </div>
+<div  class="w-full flex justify-center items-center">
+  <mat-form-field class="w-full">
+    <mat-label>Username</mat-label>
+    <input matInput [defaultValue]="username" [(ngModel)]="username">
+  </mat-form-field>
+</div>
+<div class="w-full flex justify-center items-center">
+  <mat-form-field class="w-full">
+    <mat-label>Password</mat-label>
+    <input matInput [(ngModel)]="password">
+  </mat-form-field>
+</div>
+</mat-dialog-content>
+<div class="flex justify-evenly items-center">
+  <button mat-raised-button color="primary" (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button  color="primary" (click)="proceed()"  cdkFocusInitial>Proceed</button>
+</div>
