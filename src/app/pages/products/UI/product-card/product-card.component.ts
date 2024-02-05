@@ -1,7 +1,7 @@
-import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RemixIconModule } from 'angular-remix-icon';
-import { ButtonComponent } from '../button/button.component';
+import {AsyncPipe, CommonModule, CurrencyPipe} from '@angular/common';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {RemixIconModule} from 'angular-remix-icon';
+import {ButtonComponent} from '../button/button.component';
 
 @Component({
   selector: 'app-product-card',
@@ -28,7 +28,9 @@ export class ProductCardComponent {
 
   priceDifference: number = 0;
   discount: number = 0;
-  constructor() {}
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     if (this.product.originalPrice && this.product.price) {

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
 @Pipe({
   name: 'defaultImage',
@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class DefaultImagePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
-    if(!value){
+    if (!value) {
       return 'https://www.w3schools.com/howto/img_avatar.png'
     }
     return value;

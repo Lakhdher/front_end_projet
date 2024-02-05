@@ -1,25 +1,11 @@
-import {
-  Component,
-  ElementRef,
-  HostListener,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { Product } from '../../models/product';
-import {
-  Observable,
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  fromEvent,
-  map,
-  switchMap,
-} from 'rxjs';
-import { ProductsService } from 'src/app/services/products.service';
-import { OverlayService } from 'src/app/services/overlay.service';
-import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
-import { CommonModule } from '@angular/common';
+import {Component, ElementRef, HostListener, OnInit, ViewChild,} from '@angular/core';
+import {ToastrService} from 'ngx-toastr';
+import {Product} from '../../models/product';
+import {debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable, switchMap,} from 'rxjs';
+import {ProductsService} from 'src/app/services/products.service';
+import {OverlayService} from 'src/app/services/overlay.service';
+import {ProductQuickViewComponent} from '../products/products-quick-view/products-quick-view.component';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-auto-complete',
@@ -29,13 +15,14 @@ import { CommonModule } from '@angular/common';
   imports: [ProductQuickViewComponent, CommonModule]
 })
 export class AutoCompleteComponent implements OnInit {
-  @ViewChild('productSearchInput', { static: true })
+  @ViewChild('productSearchInput', {static: true})
   productSearchInput!: ElementRef;
-  @ViewChild(ProductQuickViewComponent, { static: true })
+  @ViewChild(ProductQuickViewComponent, {static: true})
   productQuickViewRef?: ProductQuickViewComponent;
   activeProduct$: Observable<any> = this.overlay.activeProduct$;
   searchResults: Product[] | undefined;
   showResults: boolean = false;
+
   constructor(
     private productsService: ProductsService,
     private toaster: ToastrService,

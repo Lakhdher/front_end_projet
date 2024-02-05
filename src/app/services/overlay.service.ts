@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject, filter, map } from 'rxjs';
-import { promises } from '../pages/products/mock_data/promises';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, filter, map, Subject} from 'rxjs';
+import {promises} from '../pages/products/mock_data/promises';
 
 @Injectable({
   providedIn: 'root',

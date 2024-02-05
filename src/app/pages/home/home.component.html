@@ -6,9 +6,9 @@
       [rowspan]="2"
     >
       <img
+        alt="{{ product.images[0] }}"
         class="object-fill h-4/5"
         src="{{ product.images[0] }}"
-        alt="{{ product.images[0] }}"
       />
       <mat-grid-tile-footer class="flex justify-between">
         <div class="flex items-center">
@@ -17,10 +17,10 @@
           </h4>
         </div>
         <button
-          class="w-24"
-          mat-raised-button
-          color="primary"
           (click)="selectProduct(product)"
+          class="w-24"
+          color="primary"
+          mat-raised-button
         >
           View more
         </button>
@@ -28,8 +28,8 @@
     </mat-grid-tile>
   </mat-grid-list>
 </div>
- <app-product-quick-view
-  [product]="this.activeProduct$ | async"
+<app-product-quick-view
   (addToCart)="this.addToCart($event)"
   (addToWishlist)="this.addToWishlist($event)"
+  [product]="this.activeProduct$ | async"
 ></app-product-quick-view>

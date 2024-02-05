@@ -1,24 +1,11 @@
-import {
-  AfterContentInit,
-  ChangeDetectionStrategy,
-  Component,
-  ContentChildren,
-  Input,
-  QueryList,
-} from '@angular/core';
-import { AccordionItem } from './directives/accordion-item.directive';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
-import { CommonModule } from '@angular/common';
-import { TogglePipe } from './pipe/toggle.pipe';
-import { AccordionContent } from './directives/accordion-content.directive';
-import { AccordionHeader } from './directives/accordion-header.directive';
-import { AccordionTitle } from './directives/accordion-title.directive';
+import {AfterContentInit, Component, ContentChildren, Input, QueryList,} from '@angular/core';
+import {AccordionItem} from './directives/accordion-item.directive';
+import {animate, state, style, transition, trigger,} from '@angular/animations';
+import {CommonModule} from '@angular/common';
+import {TogglePipe} from './pipe/toggle.pipe';
+import {AccordionContent} from './directives/accordion-content.directive';
+import {AccordionHeader} from './directives/accordion-header.directive';
+import {AccordionTitle} from './directives/accordion-title.directive';
 
 @Component({
   selector: 'app-accordion',
@@ -30,11 +17,11 @@ import { AccordionTitle } from './directives/accordion-title.directive';
     trigger('contentExpansion', [
       state(
         'expanded',
-        style({ height: '*', opacity: 1, visibility: 'visible' })
+        style({height: '*', opacity: 1, visibility: 'visible'})
       ),
       state(
         'collapsed',
-        style({ height: '0px', opacity: 0, visibility: 'hidden' })
+        style({height: '0px', opacity: 0, visibility: 'hidden'})
       ),
       transition(
         'expanded <=> collapsed',

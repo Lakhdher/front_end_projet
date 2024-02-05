@@ -1,70 +1,74 @@
 <p class="text-center text-4xl font-bold">Profile</p>
 <mat-card>
   <mat-card-header class="h-72 w-full">
-    <img class="object-cover" src="assets/images/cover.jpg" alt="cover" />
+    <img alt="cover" class="object-cover" src="assets/images/cover.jpg"/>
   </mat-card-header>
   <mat-card-content class="mb-10 text-xl">
     <div class="flex flex-row h-32">
       <img
+        alt="{{ person.username | titlecase }}"
         class="w-60 h-60 ml-10 rounded-full -translate-y-32"
-        src="{{ person?.photo | defaultImage }}"
-        alt="{{ person?.prenom | titlecase }}+{{ person?.nom | titlecase }}"
+        src="{{ person.photo | defaultImage }}"
       />
-      <div class="-translate-y-0 translate-x-4">
+      <div class="translate-y-2 translate-x-4">
         <p>
-          Name : {{ person?.prenom | titlecase }} {{ person?.nom | titlecase
-          }}<br />
-          Age : {{ person?.age }}<br />
-          Gender : {{ person?.genre }}
+          Username : {{ person.username | titlecase }}  <br/>
+          Email : {{ person.email }}
         </p>
       </div>
     </div>
     <mat-card-content class="mt-10">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>Orders</mat-card-title>
+        <mat-card-header class="text-center flex-col justify-center items-center">
+          <mat-card-title >Orders</mat-card-title>
+
         </mat-card-header>
-        <mat-card-content>
-          <table class=" w-full">
-            <thead>
-              <tr>
+        <mat-card-content  >
+            <table class="m-4 w-full">
+              <thead class="flex justify-center items-center">
+              <tr class="flex justify-evenly items-center mr-8 w-[75%]  ">
                 <th>Order ID</th>
                 <th>Order Date</th>
-                <th>Order Status</th>
+                <th class="ml-6 ">Order Status</th>
                 <th>Order Total</th>
               </tr>
-            </thead>
-            <tr class="text-center">
-              <td>1</td>
-              <td>12/12/2020</td>
-              <td>Delivered</td>
-              <td>1000</td>
-            </tr>
-            <tr class="text-center">
-              <td>2</td>
-              <td>12/12/2020</td>
-              <td>Delivered</td>
-              <td>1000</td>
-            </tr>
-            <tr class="text-center"   >
-              <td>3</td>
-              <td>12/12/2020</td>
-              <td>Delivered</td>
-              <td>1000</td>
-            </tr>
-          </table>
+              </thead>
+            </table>
+          <p *ngIf="orders.length === 0" class="text-center text-2xl h-12 ">No Orders found</p>
+            <mat-accordion class="flex flex-col ml-auto mr-auto w-[68%]" multi>
+              <mat-expansion-panel  *ngFor="let order of orders">
+                <mat-expansion-panel-header  >
+                  <mat-panel-title class="flex justify-around text-base  w-full" >
+                   <span> {{ order.id }}</span>
+                   <span> {{ order.createdAt | date}}</span>
+                   <span> {{ order.status }}</span>
+                   <span> {{ order.total }}</span>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                  <div class="flex flex-col text-base ml-[40%]">
+                  <span>Street Address : {{order.streetAddress}}</span>
+                  <span>City : {{order.city}}</span>
+                  <span>State : {{order.state}}</span>
+                  <span>Zip : {{order.zip}}</span>
+                  <span>Phone Number : {{order.phone}}</span>
+                  </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          <div class=" w-[95%] m-8 flex  justify-center h-12">
+            <button color="primary" class="m-4" mat-raised-button (click)="accordion.openAll()">Expand All</button>
+            <button color="primary"  class="m-4" mat-raised-button (click)="accordion.closeAll()">Collapse All</button>
+          </div>
         </mat-card-content>
       </mat-card>
     </mat-card-content>
   </mat-card-content>
-  <mat-card-actions class="w-full mb-10 flex-col justify-evenly">
-    <button mat-raised-button color="primary" (click)="editProfile()">
+  <mat-card-actions class="w-full mb-8  flex-col justify-center">
+
+    <button (click)="editProfile()" class="mr-4" color="primary" mat-raised-button>
       Edit Profile
     </button>
-    <button mat-raised-button color="primary" (click)="editPassword()">
-      Edit Password
-    </button>
-    <button mat-raised-button color="primary" (click)="deleteProfile()">
+    <button (click)="deleteProfile()" class="ml-4" color="primary" mat-raised-button>
       Delete Profile
     </button>
   </mat-card-actions>

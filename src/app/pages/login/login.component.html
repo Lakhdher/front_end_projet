@@ -5,14 +5,14 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           Email
         </label>
-        <input name="email" formControlName="email"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               id="username" type="text"
-
-               [ngClass]="{
+        <input [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('email')?.errors && form.get('email')?.touched
-               }"
-               placeholder="name@example.com">
+               }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               formControlName="email"
+               id="username" name="email"
+
+               placeholder="name@example.com"
+               type="text">
         <p
           *ngIf="
           form.get('email')?.errors && (form.get('email')?.dirty || form.get('email')?.touched)
@@ -27,14 +27,14 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
           Password
         </label>
-        <input name="password" formControlName="password"
-               type="password"
-               id="password"
-               [ngClass]="{
+        <input [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('password')?.errors && form.get('password')?.touched
-               }"
-               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
-               placeholder="******************">
+               }" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700  leading-tight focus:outline-none focus:shadow-outline"
+               formControlName="password"
+               id="password"
+               name="password"
+               placeholder="******************"
+               type="password">
         <p
           *ngIf="form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)"
           class="mb-3 text-sm text-red-600 dark:text-red-500"
@@ -46,15 +46,15 @@
     </fieldset>
     <div class="flex items-center justify-between">
       <button
-        class="bg-slate-700 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         (click)="login()"
         [disabled]="form.invalid"
+        class="bg-slate-700 mt-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit">
         Sign In
       </button>
       <p class="text-sm mt- font-light text-gray-700 dark:text-gray-700">
-        Don’t have an account yet? <a routerLink="/register"
-                                      class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign
+        Don’t have an account yet? <a class="font-medium text-primary-600 hover:underline dark:text-primary-500"
+                                      routerLink="/register">Sign
         up</a>
       </p>
     </div>

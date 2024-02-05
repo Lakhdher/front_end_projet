@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root', // Make service available globally
 })
 export class CartService {
-  constructor(private toaster: ToastrService) {}
+  intermediate: any[] = [];
   private productSubject = new BehaviorSubject<any>(
     localStorage.getItem('cart')
       ? JSON.parse(localStorage.getItem('cart') || '{}')
@@ -17,7 +17,10 @@ export class CartService {
     this.productSubject.value.length
   );
   productCount$ = this.productCountSubject.asObservable();
-  intermediate: any[] = [];
+
+  constructor(private toaster: ToastrService) {
+  }
+
   setProduct(product: any) {
     product.quantity = 1;
     if (this.intermediate.find((p) => p.id === product.id)) {
@@ -32,6 +35,7 @@ export class CartService {
     this.toaster.success('Product added to cart');
     localStorage.setItem('cart', JSON.stringify(this.intermediate));
   }
+
   removeProduct(product: any) {
     this.intermediate = this.intermediate.filter((p) => p.id !== product.id);
     this.productSubject.next(this.intermediate);

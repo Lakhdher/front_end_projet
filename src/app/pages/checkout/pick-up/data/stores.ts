@@ -1,5 +1,5 @@
 let storesData;
-export default storesData=[
+export default storesData = [
   {
     "name": "Ariana Store",
     "distance": "0.5 km away",

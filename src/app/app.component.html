@@ -1,7 +1,7 @@
 <div
+  (click)="this.overlayService.clickedOutsideSubject.next()"
   *ngIf="this.showOverlay$ | async"
   class="w-screen h-screen fixed z-10 bg-black opacity-50"
-  (click)="this.overlayService.clickedOutsideSubject.next()"
 ></div>
 <app-header></app-header>
 <router-outlet></router-outlet>
