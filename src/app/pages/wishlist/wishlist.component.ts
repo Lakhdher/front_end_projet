@@ -5,11 +5,15 @@ import { ProductsService } from 'src/app/services/products.service';
 import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { CartService } from 'src/app/services/cart.service';
+import { WishlistCardComponent } from './wishlist-card/wishlist-card.component';
+import { AsyncPipe, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-wishlist',
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.css'],
+  standalone: true,
+  imports: [ProductQuickViewComponent, WishlistCardComponent, AsyncPipe, CommonModule]
 })
 export class WishlistComponent {
   products$: Observable<Product[]>;
