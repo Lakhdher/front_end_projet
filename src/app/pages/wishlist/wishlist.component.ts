@@ -16,6 +16,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
   imports: [ProductQuickViewComponent, WishlistCardComponent, AsyncPipe, CommonModule]
 })
 export class WishlistComponent {
+  products: any[] = [];
   products$: Observable<Product[]>;
   @ViewChild(ProductQuickViewComponent, { static: true })
   productQuickViewRef?: ProductQuickViewComponent;
@@ -27,6 +28,9 @@ export class WishlistComponent {
     private readonly cartService: CartService
   ) {
     this.products$ = this.productsService.getWishlist();
+    this.products$.subscribe((res) => {
+      this.products = res;
+    });
     overlay.clickedOutside$.subscribe(() => {
       this.productQuickViewRef?.close();
     });
