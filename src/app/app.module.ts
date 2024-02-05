@@ -36,7 +36,6 @@ import { AccordionComponent } from './pages/products/UI/accordion/accordion.comp
 import { ButtonComponent } from './pages/products/UI/button/button.component';
 import { TogglePipe } from './pages/products/UI/accordion/pipe/toggle.pipe';
 import { AccordionItem } from './pages/products/UI/accordion/directives/accordion-item.directive';
-import { CheckboxComponent } from './pages/products/UI/checkbox/checkbox.component';
 import { AccordionContent } from './pages/products/UI/accordion/directives/accordion-content.directive';
 import { AccordionHeader } from './pages/products/UI/accordion/directives/accordion-header.directive';
 import { AccordionTitle } from './pages/products/UI/accordion/directives/accordion-title.directive';
@@ -61,21 +60,7 @@ const icons = {
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CheckboxComponent,
-    HeaderComponent,
-    WishlistComponent,
-    NotFound404Component,
-    FooterComponent,
-    LoginComponent,
-    RegisterComponent,
-    AutoCompleteComponent,
-    CheckoutComponent,
-    DeliveryComponent,
-    PickUpComponent,
-    WishlistCardComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -83,40 +68,28 @@ const icons = {
     RemixIconModule.configure(icons),
     ReactiveFormsModule,
     HttpClientModule,
-    ProductQuickViewComponent,
     ToastrModule.forRoot(),
+    WishlistCardComponent,
+    NotFound404Component,
+    RegisterComponent,
+    FooterComponent,
     HomeComponent,
+    LoginComponent,
+    WishlistComponent,
+    AutoCompleteComponent,
+    HeaderComponent,
     ProfileComponent,
     CartComponent,
     DefaultImagePipe,
+    CheckoutComponent,
+    DeliveryComponent,
+    PickUpComponent,
+
     NgOptimizedImage,
-    SideSheetComponent,
     BrowserAnimationsModule,
-    ButtonComponent,
     ProductsComponent,
-    SidebarFilterComponent,
-    ProductsListComponent,
-    ProductCardComponent,
-    AccordionComponent,
-    AccordionItem,
-    AccordionContent,
-    AccordionHeader,
-    AccordionTitle,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  exports: [
-    ProductQuickViewComponent,
-    SideSheetComponent,
-    ButtonComponent,
-    SidebarFilterComponent,
-    ProductsListComponent,
-    AccordionComponent,
-    ProductCardComponent,
-    AccordionItem,
-    AccordionContent,
-    AccordionHeader,
-    AccordionTitle,
-  ],
 })
 export class AppModule {}

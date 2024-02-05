@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import storesData from './data/stores';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pick-up',
   templateUrl: './pick-up.component.html',
-  styleUrls: ['./pick-up.component.css']
+  styleUrls: ['./pick-up.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class PickUpComponent {
   selectedDate: Date;

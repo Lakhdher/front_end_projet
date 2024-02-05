@@ -19,11 +19,14 @@ import {
 import { ProductsService } from 'src/app/services/products.service';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auto-complete',
   templateUrl: './auto-complete.component.html',
   styleUrls: ['./auto-complete.component.css'],
+  standalone: true,
+  imports: [ProductQuickViewComponent, CommonModule]
 })
 export class AutoCompleteComponent implements OnInit {
   @ViewChild('productSearchInput', { static: true })
