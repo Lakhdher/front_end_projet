@@ -12,6 +12,7 @@ import { CartService } from '../../services/cart.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ProductsService } from 'src/app/services/products.service';
+import { Router, RouterModule } from '@angular/router';
 
 interface Product {
   id: number;
@@ -34,6 +35,7 @@ interface Product {
     NgOptimizedImage,
     KeyValuePipe,
     CurrencyPipe,
+    RouterModule,
   ],
 })
 export class CartComponent implements OnInit {
@@ -44,7 +46,8 @@ export class CartComponent implements OnInit {
     private cartService: CartService,
     private cd: ChangeDetectorRef,
     private productService: ProductsService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -64,7 +67,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-    console.log('Checkout');
+    this.router.navigate(['/checkout']);
   }
 
   removeProduct(product: Product) {
