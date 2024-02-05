@@ -52,9 +52,9 @@
     <button class="bg-primary text-white rounded-md">Login</button>
 
   </div>
-  <div routerLink="register" *ngIf="(status$| async)"
+  <div routerLink="register" (click)="logout()" *ngIf="(status$| async)"
     class="bg-slate-700 hover:bg-slate-800 h-10 text-white items-center px-4 py-2 rounded-2xl mr-2">
-    <button class="bg-primary text-white rounded-md" (click)="logout()">Logout</button>
+    <button class="bg-primary text-white rounded-md" >Logout</button>
   </div>
 
 

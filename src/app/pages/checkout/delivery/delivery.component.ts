@@ -96,4 +96,7 @@ export class DeliveryComponent {
   togglePayment() {
     this.paymentShow = !this.paymentShow;
   }
+
+    protected readonly localStorage = localStorage;
+  protected readonly Number = Number;
 }

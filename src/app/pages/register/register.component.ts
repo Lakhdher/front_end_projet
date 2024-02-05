@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule]
+  imports: [ReactiveFormsModule, CommonModule, RouterLink]
 })
 export class RegisterComponent {
   forme: FormGroup ;
@@ -33,7 +33,7 @@ export class RegisterComponent {
         .subscribe(
           () => {
             console.log("User is registered and  logged in");
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/login');
           }
         );
     }
