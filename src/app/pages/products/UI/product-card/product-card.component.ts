@@ -1,7 +1,7 @@
-import {AsyncPipe, CommonModule, CurrencyPipe} from '@angular/common';
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {RemixIconModule} from 'angular-remix-icon';
-import {ButtonComponent} from '../button/button.component';
+import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { RemixIconModule } from 'angular-remix-icon';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-product-card',
@@ -9,6 +9,7 @@ import {ButtonComponent} from '../button/button.component';
   styleUrls: ['./product-card.component.css'],
   standalone: true,
   imports: [RemixIconModule, CurrencyPipe, AsyncPipe, CommonModule, ButtonComponent],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardComponent {
   @Input()
