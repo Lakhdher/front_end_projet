@@ -1,21 +1,13 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import { COLORS } from '../mock_data/colors';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { BRANDS } from '../mock_data/brands';
-import { CATEGORIES } from '../mock_data/categories';
-import { ProductsService } from 'src/app/services/products.service';
-import { Observable } from 'rxjs';
-import { AccordionComponent } from '../UI/accordion/accordion.component';
-import { AccordionItem } from '../UI/accordion/directives/accordion-item.directive';
-import { CommonModule } from '@angular/common';
-import { ButtonComponent } from '../UI/button/button.component';
-import { AccordionContent } from '../UI/accordion/directives/accordion-content.directive';
+import {ChangeDetectorRef, Component, EventEmitter, Input, Output,} from '@angular/core';
+import {COLORS} from '../mock_data/colors';
+import {FormBuilder, ReactiveFormsModule} from '@angular/forms';
+import {ProductsService} from 'src/app/services/products.service';
+import {Observable} from 'rxjs';
+import {AccordionComponent} from '../UI/accordion/accordion.component';
+import {AccordionItem} from '../UI/accordion/directives/accordion-item.directive';
+import {CommonModule} from '@angular/common';
+import {ButtonComponent} from '../UI/button/button.component';
+import {AccordionContent} from '../UI/accordion/directives/accordion-content.directive';
 
 @Component({
   selector: 'app-sidebar-filter',
@@ -69,6 +61,7 @@ export class SidebarFilterComponent {
     categories: this.fb.array(this.categories.map((x) => false)),
     colors: this.fb.array(this.COLORS.map((x) => false)),
   });
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly productsService: ProductsService,
@@ -104,7 +97,7 @@ export class SidebarFilterComponent {
       const new_array = colors.value;
       if (colors.value[index] === true) {
         new_array[index] = false;
-        colors.setValue(new_array, { emitEvent: true });
+        colors.setValue(new_array, {emitEvent: true});
       } else {
         new_array[index] = true;
         colors.value[index] = true;

@@ -11,19 +11,18 @@ export const authGuard: CanActivateFn = (route, state) => {
     async (isLoggedIn) => {
       if (!isLoggedIn) {
         toaster.error(
-        'Please Login To Continue',
-        'Error',
+          'Please Login To Continue',
+          'Error',
           {
             timeOut: 1000,
           }
-      )
+        )
         await router.navigate(['/login'],
           {
             queryParams: {
               return: state.url
             }
           }
-
         );
       }
     }

@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
-import { CommonModule, NgClass } from '@angular/common';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent {
   form: FormGroup;
   returnUrl: string | undefined;
 
-  constructor(private fb: FormBuilder, private authService: AuthService,private toaster: ToastrService,
+  constructor(private fb: FormBuilder, private authService: AuthService, private toaster: ToastrService,
               private router: Router, route: ActivatedRoute) {
 
     this.form = this.fb.group({
@@ -46,8 +46,8 @@ export class LoginComponent {
                 },
               );
             }
-    }
-    )
+          }
+        )
       ;
     }
 

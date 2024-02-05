@@ -1,21 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { SideSheetComponent } from '../UI/side-sheet/side-sheet.component';
-import {
-  CurrencyPipe,
-  KeyValuePipe,
-  NgFor,
-  NgForOf,
-  NgIf,
-} from '@angular/common';
-import { AppModule } from '../../../app.module';
-import { ButtonComponent } from '../UI/button/button.component';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild,} from '@angular/core';
+import {SideSheetComponent} from '../UI/side-sheet/side-sheet.component';
+import {CurrencyPipe, KeyValuePipe, NgForOf, NgIf,} from '@angular/common';
+import {ButtonComponent} from '../UI/button/button.component';
 
 @Component({
   selector: 'app-product-quick-view',
@@ -44,9 +30,11 @@ export class ProductQuickViewComponent implements OnInit {
   @ViewChild(SideSheetComponent)
   private readonly sideSheetRef!: SideSheetComponent;
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   open() {
     this.sideSheetRef?.open();

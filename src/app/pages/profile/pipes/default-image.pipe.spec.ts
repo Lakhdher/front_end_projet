@@ -1,4 +1,4 @@
-import { DefaultImagePipe } from './default-image.pipe';
+import {DefaultImagePipe} from './default-image.pipe';
 
 describe('DefaultImagePipe', () => {
   it('create an instance', () => {
