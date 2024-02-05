@@ -15,10 +15,10 @@
             <div class="md:pl-3 md:w-8/12 2xl:w-3/4 flex flex-col justify-center">
               <p class="text-s leading-3 text-gray-800 md:pt-0 pt-4">{{ product.brand }}</p>
               <div class="flex items-center justify-between w-full">
-                <p class="text-base font-black leading-none text-gray-800">{{ product.name }}</p>
-                <input (change)="this.setQuantity($event, product)" [defaultValue]="1" aria-label="Select quantity"
-                       class="py-2 px-1 border rounded-[10px] border-gray-200 mr-6 mb-6 focus:outline-none w-10"
-                       type="number">
+                <p class="text-base font-black leading-none text-gray-800">{{product.name}}</p>
+                <input type="number" aria-label="Select quantity" [defaultValue]="getQuantity(product)"
+                  class="py-2 px-1 border rounded-[10px] border-gray-200 mr-6 mb-6 focus:outline-none w-10"
+                  (change)="this.setQuantity($event, product)">
               </div>
               <p class="text-xs leading-3 text-gray-600 pt-2">{{ product.description }}</p>
               <div class="flex items-center justify-between pt-5">

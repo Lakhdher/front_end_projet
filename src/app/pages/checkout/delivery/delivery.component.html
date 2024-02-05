@@ -106,7 +106,7 @@
           </div>
 
 
-          <!--          <button type="submit" (click)="save()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>-->
+
         </form>
       </div>
       <div class="rounded border" id="paymentMethod">
@@ -168,8 +168,9 @@
               </div>
             </div>
           </div>
-          <button (click)="save()" [disabled]="form.invalid || paymentForm.invalid" class="bg-blue-500 text-white px-4 py-2 rounded-md"
-                  type="submit">Submit
+          <button type="submit" [disabled]="form.invalid || paymentForm.invalid" (click)="save()"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit
+
           </button>
         </form>
       </div>
@@ -180,7 +181,7 @@
 
     <div class="mb-2 flex flex-row justify-between">
       <p class="text-sm text-gray-600">Subtotal:</p>
-      <p class="text-green-500 font-bold"> $100.00</p>
+      <p class="text-green-500 font-bold">{{ localStorage.getItem('total')| currency }}</p>
     </div>
 
     <hr class="mx-4">
@@ -209,7 +210,7 @@
 
     <div class="mt-2 flex flex-row justify-between">
       <p class="text-sm text-gray-600">Shipping:</p>
-      <p class="font-bold"> $0.00</p>
+      <p class="text-green-500 font-bold"> $10.00</p>
     </div>
 
 
@@ -217,7 +218,8 @@
 
     <div class="font-semibold text-lg flex flex-row justify-between">
       <p>Total: </p>
-      <p class="text-green-500 font-bold"> $105.00</p>
+      <p
+        class="text-green-500 font-bold"> {{ localStorage.getItem('total') ? (Number(localStorage.getItem('total')) + 15 | currency) : '' }}</p>
     </div>
   </div>
 
