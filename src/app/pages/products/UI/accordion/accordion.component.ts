@@ -1,4 +1,4 @@
-import {AfterContentInit, Component, ContentChildren, Input, QueryList,} from '@angular/core';
+import {AfterContentInit, ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList,} from '@angular/core';
 import {AccordionItem} from './directives/accordion-item.directive';
 import {animate, state, style, transition, trigger,} from '@angular/animations';
 import {CommonModule} from '@angular/common';
