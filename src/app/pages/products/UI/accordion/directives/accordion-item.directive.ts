@@ -1,7 +1,7 @@
-import { ContentChild, Directive, Input } from '@angular/core';
-import { AccordionContent } from './accordion-content.directive';
-import { AccordionHeader } from './accordion-header.directive';
-import { AccordionTitle } from './accordion-title.directive';
+import {ContentChild, Directive, Input} from '@angular/core';
+import {AccordionContent} from './accordion-content.directive';
+import {AccordionHeader} from './accordion-header.directive';
+import {AccordionTitle} from './accordion-title.directive';
 
 @Directive({
   selector: 'app-accordion-item',

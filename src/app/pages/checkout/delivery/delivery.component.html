@@ -6,14 +6,15 @@
         >
           <div class="flex flex-row gap-4">
             <div class="rounded-full bg-white p-4">
-              <img src="assets/images/truck.png" alt="truck image" class="h-12 w-12">
+              <img alt="truck image" class="h-12 w-12" src="assets/images/truck.png">
             </div>
 
             <h2 class="text-2xl font-semibold p-4">
               Free Shipping on Orders Over arrives in 3-5 business days
             </h2>
           </div>
-          <img src="{{shippingShow ?'assets/images/minus.png' : 'assets/images/expand.png'}}" alt="img" class="h-8 w-8 cursor-pointer" (click)="toggleShipping()">
+          <img (click)="toggleShipping()" alt="img"
+               class="h-8 w-8 cursor-pointer" src="{{shippingShow ?'assets/images/minus.png' : 'assets/images/expand.png'}}">
         </div>
 
         <p [ngClass]="{hidden: !shippingShow}" class="pt-8 pl-8 text-gray-600">* Required fields</p>
@@ -27,56 +28,56 @@
           <div class="mb-4">
             <div class="grid grid-cols-2 gap-4">
               <div class="mb-4">
-                <label for="firstName" class="block text-sm font-medium text-gray-600">First Name *</label>
+                <label class="block text-sm font-medium text-gray-600" for="firstName">First Name *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('firstName')?.errors && form.get('firstName')?.touched
                }"
-                  type="text" formControlName="firstName" id="firstName" name="firstName"
-                  placeholder="Enter your first name" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="firstName" id="firstName" name="firstName"
+                  placeholder="Enter your first name" type="text">
               </div>
 
               <div class="mb-4">
-                <label for="lastName" class="block text-sm font-medium text-gray-600">Last Name *</label>
+                <label class="block text-sm font-medium text-gray-600" for="lastName">Last Name *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('lastName')?.errors && form.get('lastName')?.touched
                }"
-                  type="text" formControlName="lastName" id="lastName" name="lastName"
-                  placeholder="Enter your last name" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="lastName" id="lastName" name="lastName"
+                  placeholder="Enter your last name" type="text">
               </div>
 
               <div class="mb-4 ">
-                <label for="streetAddress" class="block text-sm font-medium text-gray-600">Street Address *</label>
+                <label class="block text-sm font-medium text-gray-600" for="streetAddress">Street Address *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('streetAddress')?.errors && form.get('streetAddress')?.touched
                }"
-                  type="text" formControlName="streetAddress" id="streetAddress" name="streetAddress"
-                  placeholder="Enter your street address" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="streetAddress" id="streetAddress" name="streetAddress"
+                  placeholder="Enter your street address" type="text">
               </div>
 
               <div class="mb-4 ">
-                <label for="aptSuiteOptional" class="block text-sm font-medium text-gray-600">Apt, Suite,
+                <label class="block text-sm font-medium text-gray-600" for="aptSuiteOptional">Apt, Suite,
                   Optional</label>
-                <input type="text" formControlName="Apt" id="aptSuiteOptional" name="aptSuiteOptional"
-                       placeholder="Enter apt, suite, or optional info" class="mt-1 p-2 w-full border rounded-md">
+                <input class="mt-1 p-2 w-full border rounded-md" formControlName="Apt" id="aptSuiteOptional" name="aptSuiteOptional"
+                       placeholder="Enter apt, suite, or optional info" type="text">
               </div>
 
               <div class="mb-4">
-                <label for="city" class="block text-sm font-medium text-gray-600">City *</label>
+                <label class="block text-sm font-medium text-gray-600" for="city">City *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('city')?.errors && form.get('city')?.touched
                }"
-                  type="text" formControlName="city" id="city" name="city" placeholder="Enter your city"
-                  class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="city" id="city" name="city" placeholder="Enter your city"
+                  type="text">
               </div>
 
               <div class="flex flex-row gap-4 justify-between">
                 <div class="mb-4 flex-1 ">
-                  <label for="state" class="block text-sm font-medium text-gray-600">State</label>
-                  <select id="state" formControlName="state" name="state" class="mt-1 p-2 w-full border rounded-md">
+                  <label class="block text-sm font-medium text-gray-600" for="state">State</label>
+                  <select class="mt-1 p-2 w-full border rounded-md" formControlName="state" id="state" name="state">
                     <option value="state1">Tunis</option>
                     <option value="state2">sousse</option>
                     <option value="state3">sfax</option>
@@ -85,34 +86,34 @@
                 </div>
 
                 <div class="mb-4">
-                  <label for="zipCode" class="block text-sm font-medium text-gray-600">Zip Code *</label>
-                  <input type="text" formControlName="zip" id="zipCode" name="zipCode" placeholder="Enter your zip code"
-                         class="mt-1 p-2 w-full border rounded-md">
+                  <label class="block text-sm font-medium text-gray-600" for="zipCode">Zip Code *</label>
+                  <input class="mt-1 p-2 w-full border rounded-md" formControlName="zip" id="zipCode" name="zipCode" placeholder="Enter your zip code"
+                         type="text">
                 </div>
               </div>
 
               <div class="mb-4 col-span-2">
-                <label for="phoneNumber" class="block text-sm font-medium text-gray-600">Phone Number *</label>
+                <label class="block text-sm font-medium text-gray-600" for="phoneNumber">Phone Number *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  form.get('phone')?.errors && form.get('phone')?.touched
                }"
-                  type="tel" formControlName="phone" id="phoneNumber" name="phoneNumber"
-                  placeholder="Enter your phone number" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="phone" id="phoneNumber" name="phoneNumber"
+                  placeholder="Enter your phone number" type="tel">
               </div>
             </div>
 
           </div>
 
 
-<!--          <button type="submit" (click)="save()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>-->
+
         </form>
       </div>
       <div class="rounded border" id="paymentMethod">
         <div class="bg-gray-100 p-2 flex flex-row justify-between gap-4 items-center">
           <div class="flex flex-row gap-4 ">
             <div class="rounded-full bg-white p-4">
-              <img src="assets/images/credit-card.png" alt="credit card image" class="h-12 w-12">
+              <img alt="credit card image" class="h-12 w-12" src="assets/images/credit-card.png">
             </div>
 
             <h2 class="text-2xl font-semibold p-4">
@@ -120,54 +121,57 @@
             </h2>
           </div>
           <img
-            src="{{paymentShow ?'assets/images/minus.png' : 'assets/images/expand.png'}}"
-            alt="img" class="h-8 w-8 cursor-pointer" (click)="togglePayment()">
+            (click)="togglePayment()"
+            alt="img" class="h-8 w-8 cursor-pointer" src="{{paymentShow ?'assets/images/minus.png' : 'assets/images/expand.png'}}">
         </div>
         <form [formGroup]="paymentForm" [ngClass]="{hidden: !paymentShow}" class="p-8">
           <div class="mb-4">
             <div class="grid grid-cols-2 gap-4">
               <div class="mb-4">
-                <label for="cardNumber" class="block text-sm font-medium text-gray-600">Card Number *</label>
+                <label class="block text-sm font-medium text-gray-600" for="cardNumber">Card Number *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  paymentForm.get('cardNumber')?.errors && paymentForm.get('cardNumber')?.touched
                }"
-                  type="text" formControlName="cardNumber" id="cardNumber" name="cardNumber"
-                  placeholder="Enter your card number" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="cardNumber" id="cardNumber" name="cardNumber"
+                  placeholder="Enter your card number" type="text">
               </div>
 
               <div class="mb-4">
-                <label for="cardHolder" class="block text-sm font-medium text-gray-600">Card Holder *</label>
+                <label class="block text-sm font-medium text-gray-600" for="cardHolder">Card Holder *</label>
                 <input
                   [ngClass]="{
                'bg-red-50 border border-red-500 text-red-900':  paymentForm.get('holder')?.errors && paymentForm.get('holder')?.touched
                }"
-                  type="text" formControlName="holder" id="cardHolder" name="cardHolder"
-                  placeholder="Enter your card holder" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="holder" id="cardHolder" name="cardHolder"
+                  placeholder="Enter your card holder" type="text">
               </div>
 
               <div class="mb-4">
-                <label for="expirationDate" class="block text sm font-medium text-gray-600">Expiration Date *</label>
+                <label class="block text sm font-medium text-gray-600" for="expirationDate">Expiration Date *</label>
                 <input
                   [ngClass]="{
                 'bg-red-50 border border-red-500 text-red-900':  paymentForm.get('expiration')?.errors && paymentForm.get('expiration')?.touched
                 }"
-                  type="text" formControlName="expiration" id="expirationDate" name="expirationDate"
-                  placeholder="Enter your expiration date" class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="expiration" id="expirationDate" name="expirationDate"
+                  placeholder="Enter your expiration date" type="text">
               </div>
 
               <div class="mb-4">
-                <label for="cvv" class="block text-sm font-medium text-gray-600">CVV *</label>
+                <label class="block text-sm font-medium text-gray-600" for="cvv">CVV *</label>
                 <input
                   [ngClass]="{
                 'bg-red-50 border border-red-500 text-red-900':  paymentForm.get('cvv')?.errors && paymentForm.get('cvv')?.touched
                 }"
-                  type="text" formControlName="cvv" id="cvv" name="cvv" placeholder="Enter your cvv"
-                  class="mt-1 p-2 w-full border rounded-md">
+                  class="mt-1 p-2 w-full border rounded-md" formControlName="cvv" id="cvv" name="cvv" placeholder="Enter your cvv"
+                  type="text">
               </div>
             </div>
           </div>
-          <button type="submit" [disabled]="form.invalid || paymentForm.invalid" (click)="save()" class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit</button>
+          <button type="submit" [disabled]="form.invalid || paymentForm.invalid" (click)="save()"
+                  class="bg-blue-500 text-white px-4 py-2 rounded-md">Submit
+
+          </button>
         </form>
       </div>
     </div>
@@ -177,7 +181,7 @@
 
     <div class="mb-2 flex flex-row justify-between">
       <p class="text-sm text-gray-600">Subtotal:</p>
-      <p class="text-green-500 font-bold"> $100.00</p>
+      <p class="text-green-500 font-bold">{{ localStorage.getItem('total')| currency }}</p>
     </div>
 
     <hr class="mx-4">
@@ -186,9 +190,9 @@
       <h2>PROMOTIONAL CODE</h2>
       <div class="flex flex-row gap-2">
         <input
-          type="text"
           class="mt-1 p-2 w-full border rounded-md"
           placeholder="Enter your code"
+          type="text"
         >
         <button class="bg-emerald-950 text-white px-4  rounded-md">Apply</button>
       </div>
@@ -206,7 +210,7 @@
 
     <div class="mt-2 flex flex-row justify-between">
       <p class="text-sm text-gray-600">Shipping:</p>
-      <p class="font-bold"> $0.00</p>
+      <p class="text-green-500 font-bold"> $10.00</p>
     </div>
 
 
@@ -214,7 +218,8 @@
 
     <div class="font-semibold text-lg flex flex-row justify-between">
       <p>Total: </p>
-      <p class="text-green-500 font-bold"> $105.00</p>
+      <p
+        class="text-green-500 font-bold"> {{ localStorage.getItem('total') ? (Number(localStorage.getItem('total')) + 15 | currency) : '' }}</p>
     </div>
   </div>
 

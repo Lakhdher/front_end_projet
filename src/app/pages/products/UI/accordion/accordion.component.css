@@ -1,46 +1,45 @@
 .accordion__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f9fafb; /* Equivalent to bg-gray-50 */
-    font-size: 0.875rem; /* Equivalent to text-sm */
-    cursor: pointer;
-    padding: 0.5rem; /* Equivalent to p-2 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9fafb; /* Equivalent to bg-gray-50 */
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  cursor: pointer;
+  padding: 0.5rem; /* Equivalent to p-2 */
+}
+
+.accordion__header:hover {
+  background-color: #edf2f7; /* Equivalent to hover:bg-gray-100 */
+}
+
+.accordion__item.active .accordion__toggle-btn {
+  transform: rotate(180deg);
+}
+
+@keyframes contentExpansion {
+  from {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
-  
-  .accordion__header:hover {
-    background-color: #edf2f7; /* Equivalent to hover:bg-gray-100 */
+
+  to {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
   }
-  
-  .accordion__item.active .accordion__toggle-btn {
-    transform: rotate(180deg);
+}
+
+@keyframes contentCollapse {
+  from {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
   }
-  
-  @keyframes contentExpansion {
-    from {
-      height: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
-  
-    to {
-      height: auto;
-      opacity: 1;
-      visibility: visible;
-    }
+
+  to {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
-  
-  @keyframes contentCollapse {
-    from {
-      height: auto;
-      opacity: 1;
-      visibility: visible;
-    }
-  
-    to {
-      height: 0;
-      opacity: 0;
-      visibility: hidden;
-    }
-  }
-  
+}

@@ -1,18 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDividerModule } from '@angular/material/divider';
-import {
-  CurrencyPipe,
-  KeyValuePipe,
-  NgFor,
-  NgForOf,
-  NgIf,
-  NgOptimizedImage,
-} from '@angular/common';
-import { CartService } from '../../services/cart.service';
-import { ChangeDetectorRef } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { ProductsService } from 'src/app/services/products.service';
-import { Router, RouterModule } from '@angular/router';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {MatDividerModule} from '@angular/material/divider';
+import {CurrencyPipe, KeyValuePipe, NgFor, NgIf, NgOptimizedImage,} from '@angular/common';
+import {CartService} from '../../services/cart.service';
+import {ToastrService} from 'ngx-toastr';
+import {ProductsService} from 'src/app/services/products.service';
+import {Router, RouterModule} from '@angular/router';
 
 interface Product {
   id: number;
@@ -23,6 +15,7 @@ interface Product {
   category?: string;
   quantity: number;
 }
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -48,7 +41,8 @@ export class CartComponent implements OnInit {
     private productService: ProductsService,
     private toaster: ToastrService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   ngOnInit() {
     this.cartService.products$.subscribe((products) => {
@@ -59,6 +53,8 @@ export class CartComponent implements OnInit {
 
   setQuantity(e: any, product: Product) {
     product.quantity = e.target.value;
+    localStorage.setItem('cart', JSON.stringify(this.products));
+
   }
 
   clearCart() {
@@ -67,6 +63,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
+    localStorage.setItem('total', (this.getTotal()-10).toString());
     this.router.navigate(['/checkout']);
   }
 
@@ -102,5 +99,11 @@ export class CartComponent implements OnInit {
       return 0;
     }
     return this.getSubtotal() + 10;
+  }
+
+
+  getQuantity(product: any) {
+    return product.quantity;
+
   }
 }

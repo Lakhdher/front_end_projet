@@ -1,22 +1,16 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list';
-import { AsyncPipe, NgClass, NgForOf, NgStyle } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { ProductsService } from '../../services/products.service';
-import { Observable } from 'rxjs';
-import { OverlayService } from 'src/app/services/overlay.service';
-import { Product } from 'src/app/models/product';
-import { ProductQuickViewComponent } from '../products/products-quick-view/products-quick-view.component';
-import { CartService } from '../../services/cart.service';
-import { Toast, ToastrService } from 'ngx-toastr';
+import {Component, ViewChild} from '@angular/core';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {AsyncPipe, NgClass, NgForOf, NgStyle} from '@angular/common';
+import {MatButtonModule} from '@angular/material/button';
+import {ProductsService} from '../../services/products.service';
+import {Observable} from 'rxjs';
+import {OverlayService} from 'src/app/services/overlay.service';
+import {Product} from 'src/app/models/product';
+import {ProductQuickViewComponent} from '../products/products-quick-view/products-quick-view.component';
+import {CartService} from '../../services/cart.service';
+import {ToastrService} from 'ngx-toastr';
+import { RouterModule, RouterLink } from '@angular/router';
 
-export interface Tile {
-  cols: number;
-  rows: number;
-  image: string;
-  title?: string;
-  text?: string;
-}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -30,14 +24,17 @@ export interface Tile {
     NgStyle,
     AsyncPipe,
     ProductQuickViewComponent,
+    RouterLink,
+    RouterModule,
   ],
 })
 export class HomeComponent {
-  @ViewChild(ProductQuickViewComponent, { static: true })
+  @ViewChild(ProductQuickViewComponent, {static: true})
   productQuickViewRef?: ProductQuickViewComponent;
   activeProduct$: Observable<any> = this.overlay.activeProduct$;
 
   products$: Observable<any[]>;
+
   constructor(
     private productsService: ProductsService,
     private overlay: OverlayService,
@@ -68,7 +65,7 @@ export class HomeComponent {
           this.toaster.info('Product already in wishlist');
         }
       },
-      (err) => {
+      () => {
         this.toaster.error('Please login to proceed further!');
       }
     );

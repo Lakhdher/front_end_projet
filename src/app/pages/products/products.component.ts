@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from 'src/app/models/product';
-import { ProductsService } from 'src/app/services/products.service';
-import { SidebarFilterComponent } from './sidebar-filter/sidebar-filter.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { CommonModule } from '@angular/common';
+import {Component} from '@angular/core';
+import {Product} from 'src/app/models/product';
+import {ProductsService} from 'src/app/services/products.service';
+import {SidebarFilterComponent} from './sidebar-filter/sidebar-filter.component';
+import {ProductsListComponent} from './products-list/products-list.component';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +15,13 @@ import { CommonModule } from '@angular/common';
 export class ProductsComponent {
   products: Product[] = [];
   size: number = 0;
+  searchQuery: string = '';
+
+  constructor(private readonly productsService: ProductsService) {
+    productsService.getProducts().subscribe((products) => {
+      this.products = products;
+    });
+  }
 
   applyFilter($event: any) {
     if ($event.maxPrice === null) $event.maxPrice = 1000000000000;
@@ -34,18 +40,12 @@ export class ProductsComponent {
       this.products = products;
     });
   }
+
   openQuickView(arg0: any) {
     throw new Error('Method not implemented.');
   }
+
   clearSearch() {
     throw new Error('Method not implemented.');
-  }
-
-  searchQuery: string = '';
-
-  constructor(private readonly productsService: ProductsService) {
-    productsService.getProducts().subscribe((products) => {
-      this.products = products;
-    });
   }
 }
