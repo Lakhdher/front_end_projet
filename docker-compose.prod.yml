@@ -1,8 +1,0 @@
-services:
-  frontend:
-    image: frontend
-    build:
-      context: .
-      dockerfile: Dockerfile.prod
-    ports:
-      - "4200:80"
